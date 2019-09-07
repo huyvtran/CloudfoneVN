@@ -71,7 +71,7 @@
 - (void)displayInformationForView
 {
     if ([phoneNumber isEqualToString: hotline]) {
-        displayName = [appDelegate.localization localizedStringForKey:@"Hotline"];
+        displayName = text_hotline;
         _imgAvatar.image = [UIImage imageNamed:@"hotline_avatar.png"];
     }else{
         PhoneObject *contact = [ContactsUtil getContactPhoneObjectWithNumber: phoneNumber];

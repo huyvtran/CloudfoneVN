@@ -121,7 +121,7 @@
 
 #define AuthUser            @"ddb7c103eb98"
 #define AuthKey             @"2b909f73069e47dba6feddb7c103eb98"
-#define hotline             @"4113"
+#define hotline             @"14951"
 
 
 #define USERNAME ([[NSUserDefaults standardUserDefaults] objectForKey:key_login])
@@ -136,8 +136,13 @@
 #define incomming_call              @"Incomming"
 #define outgoing_call               @"Outgoing"
 
+#define text_hotline                @"Hotline"
+
 #define AUDIO_CALL_TYPE             1
 #define VIDEO_CALL_TYPE             2
+
+#define TAG_STAR_BUTTON             10
+#define TAG_HASH_BUTTON             11
 
 #define CALL_INV_STATE_NULL         @"PJSIP_INV_STATE_NULL"
 #define CALL_INV_STATE_CALLING      @"PJSIP_INV_STATE_CALLING"

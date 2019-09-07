@@ -184,11 +184,12 @@ AppDelegate      *app;
     //  Kiểm tra thử đang có cuộc gọi hay không? Để kiểm tra trường hợp bấm gọi từ call history của thiết bị
     int num_call = pjsua_call_get_count();
     if (num_call == 0) {
-        numTryRegister = 0;
-        
-        int numAccount = pjsua_acc_get_count();
-        if (numAccount == 0) {
-            [self tryToReRegisterToSIP];
+        NSString *turnOff = [[NSUserDefaults standardUserDefaults] objectForKey:TURN_OFF_ACC];
+        if (![AppUtil isNullOrEmpty: turnOff] && [turnOff isEqualToString:@"1"]) {
+            //  Not login when you have turned off account before
+        }else{
+            numTryRegister = 0;
+            [self refreshSIPRegistration];
         }
         
         AccountState accState = [self checkSipStateOfAccount];
@@ -226,60 +227,7 @@ AppDelegate      *app;
             else{
                 //  Chờ đăng ký SIP xong sẽ gọi
             }
-            
-            
-            
-//            switch (accState) {
-//                case eAccountNone:
-//                {
-//
-//
-//                    [self performSelector:@selector(hideSplashScreen) withObject:nil afterDelay:3.0];
-//
-//                    [WriteLogsUtils writeLogContent:[NSString stringWithFormat:@"Call with UserActivity phone number = %@, but have not signed with any account", phoneNumber] toFilePath:[LinphoneAppDelegate sharedInstance].logFilePath];
-//
-//                    break;
-//                }
-//                case eAccountOff:
-//                {
-//                    [WriteLogsUtils writeLogContent:[NSString stringWithFormat:@"Call with UserActivity phone number = %@, but current account was off", phoneNumber] toFilePath:[LinphoneAppDelegate sharedInstance].logFilePath];
-//
-//                    UIAlertView *alertAcc = [[UIAlertView alloc] initWithTitle:nil message:[localization localizedStringForKey:@"Your account was turned off. Do you want to enable and call?"] delegate:self cancelButtonTitle:[localization localizedStringForKey:@"No"] otherButtonTitles: [localization localizedStringForKey:@"Yes"], nil];
-//                    alertAcc.delegate = self;
-//                    alertAcc.tag = 100;
-//                    [alertAcc show];
-//
-//                    break;
-//                }
-//                default:
-//                    break;
-//            }
-//            if (accState == eAccountNone || accState == eAccountOff) {
-//
-//            }else{
-//                //  Check registration state
-//                LinphoneRegistrationState state = [SipUtils getRegistrationStateOfDefaultProxyConfig];
-//                if (state == LinphoneRegistrationOk) {
-//                    [waitingHud dismissAnimated: TRUE];
-//
-//                    [WriteLogsUtils writeLogContent:[NSString stringWithFormat:@"Call with UserActivity phone number = %@", phoneNumber] toFilePath:[LinphoneAppDelegate sharedInstance].logFilePath];
-//
-//                    splashScreen.hidden = YES;
-//
-//                }else {
-//                    if (waitingHud == nil) {
-//                        waitingHud = [[YBHud alloc] initWithHudType:DGActivityIndicatorAnimationTypeLineScale andText:@""];
-//                        waitingHud.tintColor = [UIColor whiteColor];
-//                        waitingHud.dimAmount = 0.5;
-//                    }
-//                    [waitingHud showInView:self.window animated:TRUE];
-//
-//                    [WriteLogsUtils writeLogContent:[NSString stringWithFormat:@"Call with UserActivity phone number = %@, but waiting for register to SIP", phoneNumber] toFilePath:[LinphoneAppDelegate sharedInstance].logFilePath];
-//                }
-//            }
         }
-    }else{
-        
     }
 }
 
@@ -1043,8 +991,24 @@ static void on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew) {
     
     if (![AppUtil isNullOrEmpty: account] && ![AppUtil isNullOrEmpty: password] && ![AppUtil isNullOrEmpty:domain] && ![AppUtil isNullOrEmpty: port])
     {
+        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.alertBody = SFM(@"register with pjsua state = %d", pjsua_get_state());
+        messageNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+        
         NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:account, @"account", password, @"password", domain, @"domain", port, @"port", nil];
         [self registerSIPAccountWithInfo: info];
+    }else{
+        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.alertBody = @"Tài khoản không tồn tại";
+        messageNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
     }
 }
 
@@ -1243,6 +1207,22 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         pjsua_acc_id acc_id = pjsua_acc_get_default();
         if (pjsua_acc_is_valid(acc_id)) {
             pjsua_acc_set_registration(acc_id, 1);
+            
+            UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+            messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+            messageNotif.alertBody = SFM(@"refresh current account");
+            messageNotif.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+        }else{
+            UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+            messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+            messageNotif.alertBody = SFM(@"account invalid");
+            messageNotif.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
         }
     }else{
         [self tryToReRegisterToSIP];
@@ -1910,6 +1890,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     if (aps != nil)
     {
         NSDictionary *alert = [aps objectForKey:@"alert"];
+        [self refreshSIPRegistration];
         [self tryToReRegisterToSIP];
         
         NSString *loc_key = [aps objectForKey:@"loc-key"];

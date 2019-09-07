@@ -897,9 +897,6 @@
 - (void)whenTurnOffPBXSuccessfully {
     [ProgressHUD dismiss];
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey: TURN_OFF_ACC];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    
     turningOffAcc = FALSE;
     
     [swAccount setUIForDisableStateWithActionTarget: NO];
@@ -908,13 +905,16 @@
 }
 
 - (void)whenTurnOnPBXSuccessfully {
-    turningOnAcc = FALSE;
     [ProgressHUD dismiss];
     
+    turningOnAcc = FALSE;
     [swAccount setUIForEnableStateWithActionTarget: FALSE];
     
     [self.view makeToast:[appDelegate.localization localizedStringForKey:@"Your account was enabled successful"]
                 duration:2.0 position:CSToastPositionCenter];
+    
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey: TURN_OFF_ACC];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

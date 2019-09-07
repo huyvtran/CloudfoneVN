@@ -172,9 +172,9 @@
     [[AppDelegate sharedInstance] playBeepSound];
     
     NSString *value = @"";
-    if (sender.tag == 10) {
+    if (sender.tag == TAG_STAR_BUTTON) {
         value = @"*";
-    }else if (sender.tag == 11) {
+    }else if (sender.tag == TAG_HASH_BUTTON) {
         value = @"#";
     }else{
         value = SFM(@"%d", (int)sender.tag);

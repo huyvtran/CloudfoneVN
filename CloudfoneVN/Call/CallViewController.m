@@ -42,7 +42,17 @@
     [self registerObserveres];
     
     //  set remote name
-    [self showCallContactInformation];
+    if ([remoteNumber isEqualToString: hotline]) {
+        if ([remoteNumber isEqualToString:hotline]) {
+            imgAvatar.image = [UIImage imageNamed:@"hotline_avatar.png"];
+        }
+        displayName = text_hotline;
+        lbSubName.hidden = TRUE;
+    }else{
+        [self showCallContactInformation];
+        lbSubName.hidden = FALSE;
+    }
+    
     if ([AppUtil isNullOrEmpty: displayName]) {
         if (callDirection == IncomingCall) {
             NSArray *nameInfo = [appDelegate getContactNameOfRemoteForCall];
@@ -138,10 +148,6 @@
         displayName = contact.name;
     }else{
         imgAvatar.image = [UIImage imageNamed:@"no_avatar.png"];
-    }
-    
-    if ([remoteNumber isEqualToString:hotline]) {
-        imgAvatar.image = [UIImage imageNamed:@"hotline_avatar.png"];
     }
 }
 

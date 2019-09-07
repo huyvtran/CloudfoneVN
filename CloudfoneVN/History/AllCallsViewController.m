@@ -140,7 +140,7 @@
     cell._phoneNumber = aCall._phoneNumber;
     
     if ([aCall._phoneNumber isEqualToString: hotline]) {
-        cell._lbName.text = [appDelegate.localization localizedStringForKey:@"Hotline"];
+        cell._lbName.text = text_hotline;
         cell._imgAvatar.image = [UIImage imageNamed:@"hotline_avatar.png"];
         
         [cell updateFrameForHotline: TRUE];

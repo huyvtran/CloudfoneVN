@@ -99,7 +99,13 @@
 - (IBAction)buttonNumberPress:(UIButton *)sender {
     [self.view endEditing: TRUE];
     
-    tfAddress.text = SFM(@"%@%d", tfAddress.text, (int)sender.tag);
+    if (sender.tag == TAG_STAR_BUTTON) {
+        tfAddress.text = SFM(@"%@*", tfAddress.text);
+    }else if (sender.tag == TAG_HASH_BUTTON) {
+        tfAddress.text = SFM(@"%@#", tfAddress.text);
+    }else{
+        tfAddress.text = SFM(@"%@%d", tfAddress.text, (int)sender.tag);
+    }
     
     //  Show or hide "add contact" button when textfield address changed
     if (tfAddress.text.length > 0){
@@ -115,7 +121,7 @@
         if (![AppUtil isNullOrEmpty: phoneNumber])
         {
             if ([phoneNumber isEqualToString: hotline]) {
-                tfAddress.text = [appDelegate.localization localizedStringForKey:@"Hotline"];
+                tfAddress.text = text_hotline;
             }else{
                 tfAddress.text = phoneNumber;
             }
