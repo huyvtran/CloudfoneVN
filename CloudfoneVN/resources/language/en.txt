@@ -1,0 +1,284 @@
+"History"   =   "History"
+"Contacts"  =   "Contacts"
+"Dialer"    =   "Dialer"
+"More"      =   "More"
+
+"Account settings" = "Account settings"
+"Settings" = "Settings"
+"Feedback" = "Feedback"
+"Privacy Policy" = "Privacy Policy"
+"Introduction" = "Introduction"
+"Send logs" = "Send logs"
+"About" = "About"
+
+"Not set"           = "Not set"
+"PBX account"       = "PBX account"
+"Change password"   = "Change password"
+
+"OFF" = "OFF"
+"ON" = "ON"
+
+"PBX" = "PBX"
+"Server ID" = "Server ID"
+"Account" = "Account"
+"Password" = "Password"
+"Clear" = "Clear"
+"Save" = "Save"
+
+"Please check your internet connection!" = "Please check your internet connection!"
+"Please enter server ID"        = "Please enter server ID"
+"Please enter account ID"       = "Please enter account ID"
+"Please enter password"         = "Please enter password"
+"Please wait..."                =   "Please wait..."
+"Change password"               = "Change password"
+
+"Please check your informations"            =   "Please check your informations!"
+"Your account was registered successful."   =   "Your account was registered successful."
+"Your account is incorrect. Please check again!"    =   "Your account is incorrect. Please check again!"
+"Failed to login. Please check again!"              =   "Failed to login. Please check again!"
+
+"Online"        = "Online"
+"Offline"       = "Offline"
+"Connecting"    = "Connecting"
+"Enabled"       = "On"
+"Disabled"      = "Off"
+"No account"    = "No account"
+
+"Reset"                     = "Reset"
+"Current password"          = "Current password"
+"New password"              = "New password"
+"Confirm password"          = "Confirm password"
+"Password are at least 6 characters long" = "Password are at least 6 characters long"
+"Enter current password"    = "Enter current password"
+"Enter new password"        = "Enter new password"
+"Enter confirm password"    = "Enter confirm password"
+
+"Confirm password is incorrect!"    =   "Confirm password is incorrect!"
+"Current password is incorrect!"    =   "Current password is incorrect!"
+"Please fill full informations!"    =   "Please fill full informations!"
+
+"Failed to change password. Please try later!"  =   "Failed to change password. Please try later!"
+"Your password has been updated successful"     =   "Your password has been updated successful"
+
+"Change language"   = "Change language"
+"Vietnamese"        = "Vietnamese"
+"English"           = "English"
+"Send"              = "Send"
+"Unknown"           = "Unknown"
+
+"Please check your internet connection!" = "Please check your internet connection!"
+"Can not send email. Please check your email account again!" = "Can not send email. Please check your email account again!"
+"Your email was sent. Thank you!"           =   "Your email was sent. Thank you!"
+"Your email was saved. Thank you!"          =   "Your email was saved. Thank you!"
+"Failed to send email. Please check again!" =   "Failed to send email. Please check again!"
+
+"Check for update"  = "Check for update"
+"Release date"      = "Release date"
+"Version"           = "Version"
+"Close"             = "Close"
+"Update"            = "Update"
+"Checking..."       = "Checking..."
+"Search..."         = "Search..."
+"Contact info"      = "Contact info"
+"Fullname"          = "Fullname"
+"Company"           = "Company"
+"Email"             = "Email"
+"Cancel"            = "Cancel"
+"Save"              = "Save"
+"Gallery"           = "Gallery"
+"Camera"            = "Camera"
+"Remove Avatar"     = "Remove Avatar"
+"Current version on App Store is %@. Do you want to update right now?" = "Current version on App Store is %@. Do you want to update right now?"
+
+"You are using the newest version"      =   "You are using the newest version"
+"PBX contacts is being synchronized"    =   "PBX contacts is being synchronized"
+"Failed to sync pbx contacts!"          =   "Failed to sync pbx contacts!"
+
+"Contacts have been successfully synchronized"  =   "Contacts have been successfully synchronized"
+"Phone number can not empty!"                   =   "Phone number can not empty!"
+"Contact name can not empty!"                   =   "Contact name can not empty!"
+"Do you want to delete this history call?"      =   "Do you want to delete this history call?"
+
+"Ringing"               =   "Ringing..."
+"Calling"               =   "Calling..."
+"Connected"             =   "Connected"
+"Call terminated"       =   "Call terminated"
+"The user is busy"      =   "The user is busy"
+"Failed"                =   "Failed!"
+"Speaker is on"         =   "Speaker is on"
+"Speaker is off"        =   "Speaker is off"
+"Microphone is on"      =   "Microphone is on"
+"Microphone is off"     =   "Microphone is off"
+
+"No call in your history"           =   "No call in your history"
+"No missed call in your history"    =   "No missed call in your history"
+"The call was canceled"             =   "The call was canceled"
+"The phone number can not empty"    =   "The phone number can not empty"
+
+"hours"         = "hours"
+"hour"          = "hour"
+"minutes"       = "minutes"
+"minute"        = "minute"
+"sec"           = "sec"
+"All"           = "All"
+"Missed"        = "Missed"
+"Calls detail"  = "Calls detail"
+"Today"         = "Today"
+"Yesterday"     = "Yesterday"
+"Incoming call" = "Incoming call"
+"Outgoing call" = "Outgoing call"
+"Missed call"   = "Missed call"
+"Aborted call"  = "Aborted"
+
+"No"            =   "No"
+"Close"         =   "Close"
+"Clear"         =   "Clear"
+
+"Can not make call now. Perhaps you have not signed your account yet!"  =   "Can not make call now. Perhaps you have not signed your account yet!"
+"You have not set up an account yet. Do you want to setup now?"         =   "You have not set up an account yet. Do you want to setup now?"
+"You will not receive any call until re-setup your account again. Are you sure?"    =   "You will not receive any call until re-setup your account again. Are you sure?"
+
+"Can not make call with yourself!"          =   "Can not make call with yourself!"
+"You have not signed your account yet"      =   You have not signed your account yet"
+"Can not get domain or port to make call"   =   "Can not get domain or port to make call"
+"This device not support scan QRCode"       =   "This device not support scan QRCode"
+"QRCode image is invalid"                   =   "QRCode image is invalid"
+"Your account was removed"                  =   "Your account was removed"
+"Your account was enabled successful"       =   "Your account was enabled successful"
+"Your account was disabled successful"      =   "Your account was disabled successful"
+"This accout is being used"                 =   "This accout is being used"
+
+"Create new contact"        =   "Create new contact"
+"Add to existing contact"   =   "Add to existing contact"
+"Choose contact"            =   "Choose contact"
+"Go to settings"            =   "Go to settings"
+"SCAN FROM PHOTO"           =   "SCAN FROM PHOTO"
+"Clearing account..."       =   "Clearing account..."
+"Registration timeout!"     =   "Registration timeout!"
+"No contacts"               =   "No contacts"
+
+"Not enough informations to enable your account"        =   "Not enough informations to enable your account"
+"This feature have not supported yet. Please try later!" =  "This feature have not supported yet. Please try later!"
+
+
+
+
+
+
+
+
+
+"Type name or phone number" = "Type name or phone number"
+
+"Off" = "Off"
+"On" = "On"
+
+
+
+"Server ID" = "Server ID"
+"Account" = "Account"
+"Password" = "Password"
+
+"Call settings" = "Call settings"
+
+"Add contact" = "Add contact"
+
+"Please input phone number" = "Please input phone number"
+"Phone number" = "Phone number"
+"Crop picture" = "Crop picture"
+"Edit contact" = "Edit contact"
+
+"Contact has been updated" = "Contact has been updated"
+
+"Delete contact" = "Delete contact"
+"Are you sure, you want to delete this contact?" =   "Are you sure, you want to delete this contact?"
+"Accept"          =   "Accept"
+"Yes"          =   "Yes"
+
+
+"Done" = "Done"
+
+"Register with phone number" = "Register with phone number"
+"Continue" = "Continue"
+"Input phone number" = "Input phone number"
+
+"Not set" = "Not set"
+"Edit profile" = "Edit profile"
+
+"Failed. Please try later!" = "Failed. Please try later!"
+"Your avatar has been uploaded success" = "Your avatar has been uploaded"
+"Your avatar has been uploaded removed" = "Your avatar has been removed"
+
+
+"and" = "and"
+"or" = "or"
+"others" = "others"
+
+"Quality" = "Quality"
+
+"Mute" = "Mute"
+"Keypad" = "Keypad"
+"Speaker" = "Speaker"
+"Add call" = "Add call"
+"Hold" = "Hold"
+"Transfer" = "Transfer"
+
+
+
+"We have not supported this feature yet. Please try later!" = "We have not supported this feature yet. Please try later!"
+
+
+"Your account was registered successful." = "Your account was registered successful."
+"This account has been registered" = "This account has been registered"
+
+"Account name" = "Account name"
+"You have a call from %@" = "You have a call from %@"
+
+"Do you want to enable this account?" = "Do you want to enable this account?"
+"Your account was turned off. Do you want to enable and call?" = "Your account was turned off. Do you want to enable and call?"
+
+"Successful" =   "Successful"
+"Pull to refresh"      = "Pull to refresh"
+
+
+"Good"     =   "Good"
+"Average"  =   "Average"
+"Low"      =   "Low"
+"Very low" =   "Very low"
+"Worse"    =   "Worse"
+
+"Mobile"         =   "Mobile"
+"Work"           =   "Work"
+"Fax"            =   "Fax"
+"Home"           =   "Home"
+"Other"          =   "Other"
+
+"Options" = "Options"
+"Notifications" =   "Notifications"
+"Can not find QR Code!" =   "Can not find QR Code!"
+
+
+
+"Delete" = "Delete"
+"Edit" = "Edit"
+
+"No network" = "No network"
+
+
+"This account is being registered" = "This account is being registered"
+
+"Please input phone number to transfer" = "Please input phone number to transfer"
+"Your call has been transfered" = "Your call has been transfered"
+"Call" = "Call"
+"Send message" = "Send message"
+"More" = "More"
+
+
+"Have not choosen contact" = "Have not choosen contact"
+"Contact has been deleted" = "Contact has been deleted"
+"Profile name has been updated" = "Profile name has been updated"
+"Not logged in" = "Not logged in"
+"Do you want to call to hotline for assistance?" = "Do you want to call to hotline for assistance?"
+"Hide" = "Hide"
+
+"Register PBX failed. Please check your account!" = "Register PBX failed. Please check your account!";

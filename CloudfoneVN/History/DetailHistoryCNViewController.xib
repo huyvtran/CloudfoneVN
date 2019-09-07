@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailHistoryCNViewController">
+            <connections>
+                <outlet property="_iconBack" destination="6lc-Xf-f6t" id="mIv-hn-58Z"/>
+                <outlet property="_imgAvatar" destination="JUm-hc-Vs2" id="yPq-gr-1vK"/>
+                <outlet property="_lbHeader" destination="N2v-HG-F88" id="qOb-Mk-uth"/>
+                <outlet property="_lbName" destination="s7o-xt-lcV" id="eaL-By-rqM"/>
+                <outlet property="_tbHistory" destination="6ZF-N9-rfS" id="r2z-lq-v7I"/>
+                <outlet property="_viewHeader" destination="6JW-EO-uzs" id="YiW-OM-tqt"/>
+                <outlet property="bgHeader" destination="Fu6-yh-UkE" id="Fqa-YS-AX7"/>
+                <outlet property="btnCall" destination="c3Y-uc-TiH" id="Xeh-Mp-0hR"/>
+                <outlet property="icDelete" destination="xCa-4t-18I" id="n9z-aN-Oiu"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="459"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="6JW-EO-uzs" userLabel="View ToolBar">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_header.png" id="Fu6-yh-UkE">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6lc-Xf-f6t">
+                            <rect key="frame" x="0.0" y="1" width="35" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ic_back.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="_iconBackClicked:" destination="-1" eventType="touchUpInside" id="Nda-bL-cag"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="N2v-HG-F88">
+                            <rect key="frame" x="70" y="10" width="180" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xCa-4t-18I">
+                            <rect key="frame" x="281" y="2" width="37" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ic_trash.png"/>
+                            <connections>
+                                <action selector="icDeleteClick:" destination="-1" eventType="touchUpInside" id="2nt-vJ-oCI"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_avatar.png" id="JUm-hc-Vs2">
+                            <rect key="frame" x="132" y="42" width="55" height="55"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s7o-xt-lcV">
+                            <rect key="frame" x="83" y="98" width="153" height="24"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6ZF-N9-rfS">
+                    <rect key="frame" x="0.0" y="140" width="320" height="311"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="c3Y-uc-TiH">
+                    <rect key="frame" x="137" y="110" width="65" height="65"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" backgroundImage="call_default.png"/>
+                    <connections>
+                        <action selector="btnCallPressed:" destination="-1" eventType="touchUpInside" id="rO6-nW-1Rj"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-144" y="-158.77061469265368"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background_header.png" width="750" height="360"/>
+        <image name="call_default.png" width="201" height="201"/>
+        <image name="ic_back.png" width="96" height="96"/>
+        <image name="ic_trash.png" width="102.40000152587891" height="102.40000152587891"/>
+        <image name="no_avatar.png" width="198" height="198"/>
+    </resources>
+</document>

@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lnM-d3-YYv" customClass="UIMiniKeypad">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="call-background.jpg" id="F5u-vU-oty">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" id="Yyd-ME-4Y3">
+                    <rect key="frame" x="0.0" y="100" width="320" height="380"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hMZ-h3-1Zg" userLabel="One">
+                            <rect key="frame" x="63" y="37" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <accessibility key="accessibilityConfiguration" label="1"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_1.png"/>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="Ei2-PF-dM3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wzz-cR-838" userLabel="Two">
+                            <rect key="frame" x="131" y="37" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="2"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_2.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="3v4-h9-fpu"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aPi-vp-bKj" userLabel="Three">
+                            <rect key="frame" x="199" y="37" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="3"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_3.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="UOA-Dn-GWk"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OuM-Up-ff3" userLabel="Four">
+                            <rect key="frame" x="62" y="104" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="4"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_4.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="G6l-E6-wfe"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DFo-CB-Wk1" userLabel="Five">
+                            <rect key="frame" x="131" y="104" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_5.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="nkk-TH-F6k"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Ox-qa-8LF" userLabel="Six">
+                            <rect key="frame" x="199" y="104" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="6"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_6.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="A0B-VN-qco"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xWY-2d-Idf" userLabel="Seven">
+                            <rect key="frame" x="62" y="171" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="7"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_7.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="pSv-Q9-zXb"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ht1-5A-1EE" userLabel="Eight">
+                            <rect key="frame" x="130" y="171" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="8"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_8.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="fIC-3x-67o"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OCI-eb-ClV" userLabel="Nine">
+                            <rect key="frame" x="199" y="172" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="9"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_9.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="wOz-1z-tpJ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oFq-qd-GrW" userLabel="Star">
+                            <rect key="frame" x="63" y="238" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="Star"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_star.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="NIi-oQ-Arn"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="fi9-OS-xvc" userLabel="Zero">
+                            <rect key="frame" x="131" y="238" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="zero"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_0.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="RWe-G5-mo3"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="siV-xL-KTQ" userLabel="Sharp">
+                            <rect key="frame" x="199" y="238" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <accessibility key="accessibilityConfiguration" label="Sharp"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                            <state key="normal" backgroundImage="mini_key_sharp.png">
+                                <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="onDigitPress:" destination="lnM-d3-YYv" eventType="touchUpInside" id="8v3-H9-fqF"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="33O-hB-9Tq">
+                            <rect key="frame" x="131" y="313" width="59" height="59"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" backgroundImage="decline_call_def.png"/>
+                            <connections>
+                                <action selector="icHangupCallClick:" destination="lnM-d3-YYv" eventType="touchUpInside" id="Rcg-dA-QS1"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="bmD-dg-RTd">
+                    <rect key="frame" x="12" y="12" width="33" height="33"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" image="ic_back.png"/>
+                </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="5vi-pL-lwc">
+                    <rect key="frame" x="49" y="47" width="224" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="bgCall" destination="F5u-vU-oty" id="ENY-uF-3dD"/>
+                <outlet property="eightButton" destination="ht1-5A-1EE" id="DvH-LZ-acb"/>
+                <outlet property="fiveButton" destination="DFo-CB-Wk1" id="CHQ-Jq-XL5"/>
+                <outlet property="fourButton" destination="OuM-Up-ff3" id="Oan-ta-TzO"/>
+                <outlet property="iconBack" destination="bmD-dg-RTd" id="18f-dl-5nb"/>
+                <outlet property="iconMiniKeypadEndCall" destination="33O-hB-9Tq" id="aP6-4b-Fgx"/>
+                <outlet property="nineButton" destination="OCI-eb-ClV" id="8vo-Tp-eeD"/>
+                <outlet property="oneButton" destination="hMZ-h3-1Zg" id="qqv-H3-2c8"/>
+                <outlet property="sevenButton" destination="xWY-2d-Idf" id="eqE-8h-ZPt"/>
+                <outlet property="sharpButton" destination="siV-xL-KTQ" id="7Yl-7s-RPY"/>
+                <outlet property="sixButton" destination="4Ox-qa-8LF" id="pMQ-Wz-WrU"/>
+                <outlet property="starButton" destination="oFq-qd-GrW" id="kl2-xs-6Af"/>
+                <outlet property="tfNumber" destination="5vi-pL-lwc" id="lwx-hH-kKq"/>
+                <outlet property="threeButton" destination="aPi-vp-bKj" id="Mz9-Vw-cO4"/>
+                <outlet property="twoButton" destination="Wzz-cR-838" id="R2e-yg-M9D"/>
+                <outlet property="viewKeypad" destination="Yyd-ME-4Y3" id="o3C-we-oxk"/>
+                <outlet property="zeroButton" destination="fi9-OS-xvc" id="2Vq-tG-gj5"/>
+            </connections>
+            <point key="canvasLocation" x="-4638.3999999999996" y="-260.86956521739131"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="call-background.jpg" width="750" height="1334"/>
+        <image name="decline_call_def.png" width="200" height="200"/>
+        <image name="ic_back.png" width="96" height="96"/>
+        <image name="mini_key_0.png" width="201" height="201"/>
+        <image name="mini_key_1.png" width="201" height="201"/>
+        <image name="mini_key_2.png" width="201" height="201"/>
+        <image name="mini_key_3.png" width="201" height="201"/>
+        <image name="mini_key_4.png" width="201" height="201"/>
+        <image name="mini_key_5.png" width="201" height="201"/>
+        <image name="mini_key_6.png" width="201" height="201"/>
+        <image name="mini_key_7.png" width="201" height="201"/>
+        <image name="mini_key_8.png" width="201" height="201"/>
+        <image name="mini_key_9.png" width="201" height="201"/>
+        <image name="mini_key_sharp.png" width="201" height="201"/>
+        <image name="mini_key_star.png" width="201" height="201"/>
+    </resources>
+</document>

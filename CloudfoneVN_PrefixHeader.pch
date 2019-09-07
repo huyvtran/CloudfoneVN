@@ -1,0 +1,33 @@
+//
+//  NhanHoa_PrefixHeader.pch
+//  NhanHoa
+//
+//  Created by lam quang quan on 4/25/19.
+//  Copyright © 2019 Nhan Hoa. All rights reserved.
+//
+
+#ifndef NhanHoa_PrefixHeader_pch
+#define NhanHoa_PrefixHeader_pch
+
+#ifdef __OBJC__
+#import "Masonry.h"
+#import "AppStrings.h"
+#import "AppUtil.h"
+#import "DeviceUtil.h"
+#import "ContactsUtil.h"
+#import "WriteLogsUtils.h"
+#import "SipUtil.h"
+#import "DatabaseUtil.h"
+#import "AppDelegate.h"
+#import "ProgressHUD.h"
+#import "UIView+Toast.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+#import <FMDatabase.h>
+#import <FMDatabaseQueue.h>
+#import <AVFoundation/AVFoundation.h>
+
+#endif
+
+
+#endif /* NhanHoa_PrefixHeader_pch */

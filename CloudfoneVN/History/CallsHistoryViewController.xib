@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CallsHistoryViewController">
+            <connections>
+                <outlet property="_btnEdit" destination="cAI-EV-ef3" id="Oxv-cc-xtL"/>
+                <outlet property="_iconAll" destination="7zp-6y-STo" id="H8A-vq-CRL"/>
+                <outlet property="_iconMissed" destination="tZU-Xr-NxF" id="RRQ-TC-mKP"/>
+                <outlet property="_viewHeader" destination="SwC-Fv-tAA" id="qGz-av-UQv"/>
+                <outlet property="bgHeader" destination="Tlv-NH-843" id="BkJ-vL-9kC"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="SwC-Fv-tAA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_header.png" id="Tlv-NH-843">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tZU-Xr-NxF">
+                            <rect key="frame" x="159" y="0.0" width="70" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Missed"/>
+                            <connections>
+                                <action selector="_iconMissedClicked:" destination="-1" eventType="touchUpInside" id="JWm-Lz-LpG"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cAI-EV-ef3">
+                            <rect key="frame" x="284" y="3" width="33" height="33"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" image="ic_trash.png"/>
+                            <connections>
+                                <action selector="_btnEditPressed:" destination="-1" eventType="touchUpInside" id="Jse-Ix-qqj"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7zp-6y-STo">
+                            <rect key="frame" x="111" y="2" width="40" height="40"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="All"/>
+                            <connections>
+                                <action selector="_iconAllClicked:" destination="-1" eventType="touchUpInside" id="gi4-6E-LKo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-3" y="-385"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background_header.png" width="750" height="360"/>
+        <image name="ic_trash.png" width="102.40000152587891" height="102.40000152587891"/>
+    </resources>
+</document>

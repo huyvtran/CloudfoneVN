@@ -1,0 +1,286 @@
+"History"   =   "Lịch sử"
+"Contacts"  =   "Danh bạ"
+"Dialer"    =   "Bàn phím"
+"More"      =   "Xem thêm"
+
+"Account settings" = "Cài đặt tài khoản"
+"Settings" = "Thiết lập chung"
+"Feedback" = "Phản hồi"
+"Privacy Policy" = "Chính sách bảo mật"
+"Introduction" = "Giới thiệu"
+"Send logs" = "Gửi nhật ký"
+"About" = "Thông tin"
+
+"Not set" = "Chưa có tên"
+"PBX account" = "Tài khoản PBX"
+"Change password" = "Đổi mật khẩu"
+
+"OFF" = "TẮT"
+"ON" = "BẬT"
+
+"PBX" = "Nội bộ"
+"Server ID" = "Địa chỉ máy chủ"
+"Account" = "Tài khoản"
+"Password" = "Mật khẩu"
+
+"Save" = "Lưu"
+
+"Please check your internet connection!" = "Vui lòng kiểm tra kết nối mạng của bạn!"
+"Please enter server ID"    = "Vui lòng nhập địa chỉ máy chủ"
+"Please enter account ID"   = "Vui lòng nhập tài khoản"
+"Please enter password"     = "Vui lòng nhập mật khẩu"
+"Please wait..."            =   "Vui lòng chờ..."
+"Change password"           = "Đổi mật khẩu"
+
+"Please check your informations"            =   "Vui lòng kiểm tra thông tin của bạn!"
+"Your account was registered successful."   =   "Tài khoản đã được đăng ký thành công."
+"Your account is incorrect. Please check again!"    =   "Tài khoản của bạn không chính xác. Vui lòng kiểm tra lại!"
+"Failed to login. Please check again!"              =   "Đăng nhập thất bại. Vui lòng kiểm tra lại!"
+
+
+"Online"        = "Sẵn sàng"
+"Offline"       = "Chưa kết nối"
+"Connecting"    = "Đang kết nối"
+"Enabled"       = "Đang bật"
+"Disabled"      = "Đã tắt"
+"No account"    = "Không có tài khoản"
+
+"Reset"                     = "Nhập lại"
+"Current password"          = "Mật khẩu hiện tại"
+"New password"              = "Mật khẩu mới"
+"Confirm password"          = "Xác nhận mật khẩu"
+"Password are at least 6 characters long" = "Mật khẩu phải có ít nhất 6 kí tự"
+"Enter current password"    = "Nhập mật khẩu hiện tại"
+"Enter new password"        = "Nhập mật khẩu mới"
+"Enter confirm password"    = "Nhập xác nhận mật khẩu"
+
+"Confirm password is incorrect!"    =   "Xác nhận mật khẩu không chính xác!"
+"Current password is incorrect!"    =   "Mật khẩu hiện tại không chính xá!c"
+"Please fill full informations!"    =   "Vui lòng điền đầy đủ thông tin!"
+
+"Failed to change password. Please try later!"  =   "Cập nhật mật khẩu không thành công. Vui lòng thử lại sau!"
+"Your password has been updated successful"     =   "Mật khẩu đã được cập nhật thành công"
+
+"Change language"   = "Đổi ngôn ngữ"
+"Vietnamese"        = "Tiếng việt"
+"English"           = "Tiếng anh"
+"Send"              = "Gửi"
+"Unknown"           = "Không xác định"
+
+"Please check your internet connection!" = "Vui lòng kiểm tra kết nối mạng của bạn!"
+"Can not send email. Please check your email account again!" = "Không thể gửi email. Vui lòng kiểm tra lại tài khoản email của bạn!"
+"Your email was sent. Thank you!"           =   "Thư của bạn đã được gửi. Xin cảm ơn!"
+"Your email was saved. Thank you!"          =   "Thư của bạn đã được lưu. Xin cảm ơn!"
+"Failed to send email. Please check again!" =   "Gửi email không thành công. Vui lòng kiểm tra lại!"
+
+"Check for update"  = "Kiểm tra cập nhật"
+"Release date"      = "Ngày phát hành"
+"Version"           = "Phiên bản"
+"Close"             = "Đóng"
+"Update"            = "Cập nhật"
+"Checking..."       = "Đang kiểm tra..."
+"Search..."         = "Tìm kiếm..."
+"Contact info"      = "Thông tin liên hệ"
+"Fullname"          = "Họ tên"
+"Company"           = "Công ty"
+"Email"             = "Email"
+"Cancel"            = "Hủy bỏ"
+"Save"              = "Lưu"
+"Gallery"           = "Thư viện"
+"Camera"            = "Chụp ảnh"
+"Remove Avatar"     = "Hủy ảnh đại diện"
+"Current version on App Store is %@. Do you want to update right now?" = "Phiên bản hiện tại trên App Store là %@. Bạn có muốn cập nhật ngay bây giờ?"
+"You are using the newest version"      =   "Bạn đang sử dụng phiên bản mới nhất."
+"PBX contacts is being synchronized"    =   "Danh bạ nội bộ đang được đồng bộ"
+"Failed to sync pbx contacts!"          =   "Đồng bộ danh bạ nội bộ thất bại!"
+
+"Contacts have been successfully synchronized"  =   "Danh bạ đã được đồng bộ thành công"
+"Phone number can not empty!"                   =   "Số điện thoại không được rỗng!"
+"Contact name can not empty!"                   =   "Tên liên hệ không được rỗng!"
+"Do you want to delete this history call?"      =   "Bạn có muốn xóa cuộc gọi lịch sử này không?"
+
+"Ringing"               =   "Đang đổ chuông..."
+"Calling"               =   "Đang gọi..."
+"Call terminated"       =   "Cuộc gọi đã kết thúc"
+"The user is busy"      =   "Người dùng đang bận"
+"Failed"                =   "Thất bại!"
+"Speaker is on"         =   "Loa ngoài đã được bật"
+"Speaker is off"        =   "Loa ngoài đã được tắt"
+"Microphone is on"      =   "Microphone đã được bật"
+"Microphone is off"     =   "Microphone đã được tắt"
+
+"No call in your history"           =   "Không có cuộc gọi"
+"No missed call in your history"    =   "Không có cuộc gọi nhỡ"
+"The call was canceled"             =   "Cuộc gọi đã bị hủy"
+"The phone number can not empty"    =   "Số điện thoại không được rỗng"
+
+"hours"         = "giờ"
+"hour"          = "giờ"
+"minutes"       = "phút"
+"minute"        = "phút"
+"sec"           = "giây"
+"All"           = "Tất cả"
+"Missed"        = "Gọi nhỡ"
+"Calls detail"  = "Chi tiết cuộc gọi"
+"Today"         = "Hôm nay"
+"Yesterday"     = "Hôm qua"
+"Incoming call" = "Cuộc gọi đến"
+"Outgoing call" = "Cuộc gọi đi"
+"Missed call"   = "Cuộc gọi nhỡ"
+"Aborted call"  = "Bị hủy bỏ"
+
+"No"        =   "Không"
+"Close"     =   "Đóng"
+"Clear"     =   "Xóa"
+
+"Can not make call now. Perhaps you have not signed your account yet!"  = "Không thể gọi lúc này. Có lẽ bạn chưa đăng nhập tài khoản!"
+"You have not set up an account yet. Do you want to setup now?"         = "Bạn chưa cài đặt tài khoản. Bạn có muốn cài đặt bây giờ không?"
+"You will not receive any call until re-setup your account again. Are you sure?"    =   "Bạn sẽ không nhận được bất kì cuộc gọi nào cho đến khi cài đặt lại tài khoản. Bạn có chắc không?"
+
+"Can not make call with yourself!"          =   "Không thể gọi cho chính bạn!"
+"You have not signed your account yet"      =   "Bạn chưa đăng nhập tài khoản"
+"Can not get domain or port to make call"   =   "Không lấy được domain hay port để thực hiện cuộc gọi"
+"This device not support scan QRCode"       =   "Thiết bị không hỗ trợ quét mã QR"
+"QRCode image is invalid"                   =   "Mã QR không hợp lệ"
+"Your account was removed"                  =   "Tài khoản của bạn đã được xoá"
+"Your account was enabled successful"       =   "Tài khoản của bạn đã được bật thành công"
+"Your account was disabled successful"      =   "Tài khoản của bạn đã được tắt thành công"
+"This accout is being used"                 =   "Tài khoản này đang được sử dụng"
+
+"Create new contact"        =   "Tạo số liên lạc mới"
+"Add to existing contact"   =   "Thêm vào danh bạ"
+"Choose contact"            =   "Chọn liên hệ"
+"Go to settings"            =   "Đi đến cài đặt"
+"SCAN FROM PHOTO"           =   "QUÉT ẢNH CÓ SẴN"
+"Clearing account..."       =   "Đang xoá tài khoản..."
+"Registration timeout!"     =   "Hết thời gian chờ!"
+"No contacts"               =   "Không có liên hệ"
+
+"Not enough informations to enable your account"        =   "Không đủ thông tin để kích hoạt lại tài khoản của bạn"
+"This feature have not supported yet. Please try later!" =  "Tính năng này chưa được hỗ trợ. Vui lòng thử lại sau!"
+
+
+
+
+
+
+
+"Type name or phone number" = "Ngập tên hoặc số điện thoại"
+"Off" = "Tắt"
+"On" = "Bật"
+
+
+
+"Server ID" = "Địa chỉ máy chủ"
+"Account" = "Tài khoản"
+"Password" = "Mật khẩu"
+
+
+
+"Call settings" = "Cài đặt cuộc gọi"
+
+
+"Add contact" = "Thêm liên hệ"
+
+
+"Please input phone number" = "Vui lòng nhập số điện thoại"
+"Phone number" = "Số điện thoại"
+"Crop picture" = "Cắt hình ảnh"
+"Edit contact" = "Chỉnh sửa liên hệ"
+
+"Contact has been updated" = "Liên hệ đã được cập nhật"
+
+"Delete contact" = "Xóa liên hệ"
+"Are you sure, you want to delete this contact?" =   "Are you sure, you want to delete this contact?"
+"Accept"    =   "Đồng ý"
+"Yes"       =   "Có"
+
+
+
+"Done" = "Xong"
+
+
+
+
+
+
+"Register with phone number" = "Đăng ký với số điện thoại"
+"Continue" = "Tiếp tục"
+"Input phone number" = "Nhập số điện thoại"
+
+"Not set" = "Chưa có tên"
+"Edit profile" = "Cập nhật hồ sơ"
+
+"Failed. Please try later!" = "Thất bại. Vui lòng thử lại sau!"
+"Your avatar has been uploaded success" = "Ảnh đại diện của bạn đã được tải lên thành công"
+"Your avatar has been uploaded removed" = "Ảnh đại diện của bạn đã được xoá thành công"
+
+
+"and" = "và"
+"or" = "hoặc"
+"others" = "người khác"
+
+
+"Quality" = "Chất lượng"
+
+"Mute" = "Tắt tiếng"
+"Keypad" = "Bàn phím"
+"Speaker" = "Loa ngoài"
+"Add call" = "Thêm cuộc gọi"
+"Hold" = "Giữ cuộc gọi"
+"Transfer" = "Chuyển cuộc gọi"
+
+"We have not supported this feature yet. Please try later!" = "Chúng tôi chưa hỗ trợ tính năng này. Vui lòng thử lại sau!"
+
+"Your account was registered successful." = "Tài khoản đã được đăng ký thành công."
+"This account has been registered" = "Tài khoản này đã được đăng ký"
+"Account name" = "Tên tài khoản"
+"You have a call from %@" = "Bạn có cuộc gọi từ %@"
+
+"Do you want to enable this account?" = "Bạn có muốn kích hoạt lại tài khoản này?"
+"Your account was turned off. Do you want to enable and call?" = "Tài khoản của bạn đã bị tắt. Bạn có muốn mở lại và gọi?"
+
+
+"Successful" =   "Thành công"
+"Pull to refresh"      = "Kéo để tải lại"
+
+"Good"     =   "Tốt"
+"Average"  =   "Trung bình"
+"Low"      =   "Thấp"
+"Very low" =   "Yếu"
+"Worse"    =   "Kém"
+
+"Mobile"     =   "Di động"
+"Work"       =   "Công ty"
+"Fax"        =   "Fax"
+"Home"       =   "Nhà"
+"Other"      =   "Khác"
+
+"Options" = "Tùy chọn"
+
+
+"Notifications" =   "Thông báo"
+"Can not find QR Code!"=   "Không thể tìm thấy mã QR!"
+"Delete"    = "Xóa"
+"Edit"      = "Sửa"
+
+"No network" = "Không internet"
+
+
+"This account is being registered" = "Tài khoản này đang được đăng nhập"
+
+"Please input phone number to transfer" = "Vui lòng nhập số điện thoại để chuyển"
+"Your call has been transfered" = "Cuộc gọi của bạn đã được chuyển thành công"
+"Call" = "Gọi"
+"Send message" = "Gửi tin nhắn"
+"More" = "Thêm"
+
+
+"Have not choosen contact" = "Chưa chọn liên hệ"
+"Contact has been deleted" = "Liên hệ đã được xoá"
+"Profile name has been updated" = "Tên tài khoản đã được cập nhật"
+"Not logged in" = "Chưa đăng nhập"
+"Do you want to call to hotline for assistance?" = "Bạn có muốn gọi đến đường dây nóng của chúng tôi để được hỗ trợ?"
+"Hide" = "Ẩn"
+
+"Register PBX failed. Please check your account!" = "Đăng ký thất bại. Vui lòng kiểm tra lại tài khoản của bạn!";

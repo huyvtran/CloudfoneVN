@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-CloudfoneVN/Pods-CloudfoneVN-frameworks.sh
+${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework
+${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework
+${BUILT_PRODUCTS_DIR}/ProgressHUD/ProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/Toast/Toast.framework
