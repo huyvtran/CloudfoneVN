@@ -281,14 +281,6 @@ AppDelegate      *app;
     return YES;
 }
 
-- (void)clearAndReRegisterAgainSIPAccount {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeTextForConnectingSIPAccount" object:nil];
-    
-    numTryRegister++;
-    [self deleteSIPAccountDefault];
-    [self performSelector:@selector(tryToReRegisterToSIP) withObject:nil afterDelay:1.0];
-}
-
 + (AppDelegate *)sharedInstance{
     return (AppDelegate*)[[UIApplication sharedApplication] delegate];
 }
@@ -1029,14 +1021,17 @@ static void on_reg_state(pjsua_acc_id acc_id)
             //  get missed callfrom server
             [app getMissedCallFromServer];
             [app checkToCallPhoneNumberFromPhoneCallHistory];
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:notifRegistrationStateChange object:[NSNumber numberWithInt: info.status]];
-        }else{
-            if (app.numTryRegister <= 5) {
-                [app clearAndReRegisterAgainSIPAccount];
-            }
-            [[NSNotificationCenter defaultCenter] postNotificationName:notifRegistrationStateChange object:[NSNumber numberWithInt: info.status]];
         }
+        
+        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.alertBody = SFM(@"state: %d", info.status);
+        messageNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:notifRegistrationStateChange object:[NSNumber numberWithInt: info.status]];
     });
     PJ_UNUSED_ARG(acc_id);
     
@@ -1891,7 +1886,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     {
         NSDictionary *alert = [aps objectForKey:@"alert"];
         [self refreshSIPRegistration];
-        [self tryToReRegisterToSIP];
         
         NSString *loc_key = [aps objectForKey:@"loc-key"];
         NSString *callId = [aps objectForKey:@"call-id"];
