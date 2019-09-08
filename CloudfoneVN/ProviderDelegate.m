@@ -69,10 +69,14 @@
     }
     update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:value];
     
-    if ([AppUtil isNullOrEmpty: caller_name]) {
-        caller_name = value;
+    if ([handle isEqualToString: hotline]) {
+        caller_name = text_hotline;
     }else{
-        caller_name = SFM(@"%@ - %@", caller_name, handle);
+        if ([AppUtil isNullOrEmpty: caller_name]) {
+            caller_name = value;
+        }else{
+            caller_name = SFM(@"%@ - %@", caller_name, handle);
+        }
     }
     
     update.localizedCallerName = caller_name;
@@ -121,6 +125,14 @@
 	[action fulfill];
     
     [[AppDelegate sharedInstance] hangupAllCall];
+    UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+    messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+    messageNotif.alertBody = SFM(@"app state: %ld", (long)[[UIApplication sharedApplication] applicationState]);
+    messageNotif.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+    
 }
 
 - (void)provider:(CXProvider *)provider performSetMutedCallAction:(nonnull CXSetMutedCallAction *)action {
