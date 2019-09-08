@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CloudfoneVN/More/PBXSettingViewController.m"
-            timestampString = "589307210.04408"
+            timestampString = "589568453.642628"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "572"
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CloudfoneVN/AppDelegate.m"
-            timestampString = "589565106.435968"
+            timestampString = "589626242.682922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1963"
-            endingLineNumber = "1963"
+            startingLineNumber = "1932"
+            endingLineNumber = "1932"
             landmarkName = "-processRemoteNotification:"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CloudfoneVN/Utils/DeviceUtil.m"
-            timestampString = "589565106.436691"
+            timestampString = "589565415.8583061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "206"
@@ -74,28 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CloudfoneVN/Utils/DeviceUtil.m"
-            timestampString = "589565106.43695"
+            timestampString = "589565415.858354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "208"
             endingLineNumber = "208"
             landmarkName = "+tryToConnectToEarphone"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CloudfoneVN/AppDelegate.m"
-            timestampString = "589565106.4371639"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "-applicationDidBecomeActive:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CloudfoneVN/Dialer/DialerViewController.m"
-            timestampString = "589308940.601335"
+            timestampString = "589626242.6842279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "300"
-            endingLineNumber = "300"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "-checkToRegisterSIPAccountForApp"
             landmarkType = "7">
          </BreakpointContent>
@@ -154,12 +138,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CloudfoneVN/AppDelegate.m"
-            timestampString = "589565106.437727"
+            timestampString = "589626242.684279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1914"
-            endingLineNumber = "1914"
-            landmarkName = "-processRemoteNotification:"
+            startingLineNumber = "1559"
+            endingLineNumber = "1559"
+            landmarkName = "-hideTransferCallView"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -169,29 +153,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CloudfoneVN/AppDelegate.m"
-            timestampString = "589565106.438206"
+            filePath = "CloudfoneVN/Utils/ContactsUtil.m"
+            timestampString = "589625305.804443"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1591"
-            endingLineNumber = "1591"
-            landmarkName = "-checkToClearAllAccRegisteredBefore"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CloudfoneVN/AppDelegate.m"
-            timestampString = "589565106.438679"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1643"
-            endingLineNumber = "1643"
-            landmarkName = "-removeAccIDWhenRegisterFailed"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
+            landmarkName = "+getPBXContactWithExtension:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

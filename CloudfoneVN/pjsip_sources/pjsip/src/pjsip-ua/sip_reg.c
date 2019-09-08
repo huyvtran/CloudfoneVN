@@ -386,8 +386,8 @@ PJ_DEF(pj_status_t) pjsip_regc_init( pjsip_regc *regc,
 
     /* Set "Call-ID" header. */
     //  Close by Khai Le
-    //  regc->cid_hdr = pjsip_cid_hdr_create(regc->pool);
-    //  pj_create_unique_string(regc->pool, &regc->cid_hdr->id);
+    regc->cid_hdr = pjsip_cid_hdr_create(regc->pool);
+    pj_create_unique_string(regc->pool, &regc->cid_hdr->id);
 
     /* Set "CSeq" header. */
     regc->cseq_hdr = pjsip_cseq_hdr_create(regc->pool);

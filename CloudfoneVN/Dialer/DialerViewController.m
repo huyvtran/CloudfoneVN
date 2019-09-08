@@ -60,6 +60,9 @@
 }
 
 - (void)testAction {
+    [appDelegate refreshSIPRegistration];
+    return;
+    
     NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:@"nhcla150", @"account", @"cloudcall123", @"password", @"nhanhoa1.vfone.vn", @"domain", @"51000", @"port", nil];
     [appDelegate registerSIPAccountWithInfo: info];
     
@@ -76,6 +79,7 @@
     
     [self registerObservers];
     //  [self checkToRegisterSIPAccountForApp];
+    //  [appDelegate refreshSIPRegistration];
     [self checkAccountStateForApp];
     
     // invisible icon add contact & icon delete address

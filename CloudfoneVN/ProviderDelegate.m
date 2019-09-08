@@ -64,6 +64,9 @@
     //  [Khai Le - 16/12/2018]
 	//  update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypeGeneric value:handle];
     NSString *value = SFM(@"%@|||%@", caller_name, handle);
+    if ([AppUtil isNullOrEmpty: caller_name]) {
+        value = handle;
+    }
     update.remoteHandle = [[CXHandle alloc] initWithType:CXHandleTypePhoneNumber value:value];
     
     if ([AppUtil isNullOrEmpty: caller_name]) {

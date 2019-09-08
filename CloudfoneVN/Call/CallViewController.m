@@ -536,7 +536,13 @@
         
         [self showSpeakerButtonWithCurrentRouteState];
     }else if ([call_state isEqualToString: CALL_INV_STATE_CONFIRMED]){
-        icMute.enabled = icMiniKeypad.enabled = icSpeaker.enabled = icAddCall.enabled = icHoldCall.enabled = icTransfer.enabled = TRUE;
+        if ([remoteNumber isEqualToString: hotline]) {
+            icAddCall.enabled = icTransfer.enabled = FALSE;
+            icMute.enabled = icMiniKeypad.enabled = icSpeaker.enabled = icHoldCall.enabled = TRUE;
+            
+        }else{
+            icMute.enabled = icMiniKeypad.enabled = icSpeaker.enabled = icAddCall.enabled = icHoldCall.enabled = icTransfer.enabled = TRUE;
+        }
         
         [self showSpeakerButtonWithCurrentRouteState];
     }

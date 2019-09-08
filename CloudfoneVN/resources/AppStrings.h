@@ -121,7 +121,7 @@
 
 #define AuthUser            @"ddb7c103eb98"
 #define AuthKey             @"2b909f73069e47dba6feddb7c103eb98"
-#define hotline             @"14951"
+#define hotline             @"14952"
 
 
 #define USERNAME ([[NSUserDefaults standardUserDefaults] objectForKey:key_login])

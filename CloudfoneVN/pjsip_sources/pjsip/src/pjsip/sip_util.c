@@ -238,11 +238,12 @@ static void init_request_throw( pjsip_endpoint *endpt,
     }
 
     /* Add Call-ID header. */
-    if (strcmp(method->name.ptr, "REGISTER") == 0) {
-        printf("EQUAL");
-    }else{
-        pjsip_msg_add_hdr(msg, (pjsip_hdr*)param_call_id);
-    }
+    pjsip_msg_add_hdr(msg, (pjsip_hdr*)param_call_id);
+//    if (strcmp(method->name.ptr, "REGISTER") == 0) {
+//        printf("EQUAL");
+//    }else{
+//        pjsip_msg_add_hdr(msg, (pjsip_hdr*)param_call_id);
+//    }
     
     /* Add CSeq header. */
     pjsip_msg_add_hdr(msg, (pjsip_hdr*)param_cseq);

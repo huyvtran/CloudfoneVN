@@ -187,45 +187,54 @@ AppDelegate      *app;
         NSString *turnOff = [[NSUserDefaults standardUserDefaults] objectForKey:TURN_OFF_ACC];
         if (![AppUtil isNullOrEmpty: turnOff] && [turnOff isEqualToString:@"1"]) {
             //  Not login when you have turned off account before
-        }else{
-            numTryRegister = 0;
-            [self refreshSIPRegistration];
-        }
-        
-        AccountState accState = [self checkSipStateOfAccount];
-        //  kiếm tra có phải từ phone call history mở lên không
-        NSString *phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:UserActivity];
-        if (![AppUtil isNullOrEmpty: phoneNumber])
-        {
-            if (accState == eAccountNone) {
-                //  Nếu chưa đăng nhập, mà có thông tin đăng nhập thì đăng nhập rồi gọi
-                NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_ID];
-                NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
-                
-                if (![AppUtil isNullOrEmpty: domain] && ![AppUtil isNullOrEmpty: port] && ![AppUtil isNullOrEmpty: USERNAME] && ![AppUtil isNullOrEmpty: port])
-                {
-                    
-                }else{
-                    //  reset value
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivity];
-                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivityName];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    
-                    [self.window makeToast:[localization localizedStringForKey:@"You have not signed your account yet"] duration:3.0 position:CSToastPositionCenter];
-                }
-            }
-            else if (accState == eAccountOn) {
-                NSString *displayName = [[NSUserDefaults standardUserDefaults] objectForKey:UserActivityName];
-                //  Nếu SIP registration đang sẵn sàng thì gọi
-                [SipUtil makeCallToPhoneNumber: phoneNumber displayName: displayName];
+            NSString *phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:UserActivity];
+            if (![AppUtil isNullOrEmpty: phoneNumber])
+            {
+                [self.window makeToast:[localization localizedStringForKey:@"Can not make call. Your account was disabled!"] duration:2.0 position:CSToastPositionCenter style:errorStyle];
                 
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivity];
                 [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivityName];
                 [[NSUserDefaults standardUserDefaults] synchronize];
-                
             }
-            else{
-                //  Chờ đăng ký SIP xong sẽ gọi
+        }else{
+            numTryRegister = 0;
+            [self refreshSIPRegistration];
+            
+            AccountState accState = [self checkSipStateOfAccount];
+            //  kiếm tra có phải từ phone call history mở lên không
+            NSString *phoneNumber = [[NSUserDefaults standardUserDefaults] objectForKey:UserActivity];
+            if (![AppUtil isNullOrEmpty: phoneNumber])
+            {
+                if (accState == eAccountNone) {
+                    //  Nếu chưa đăng nhập, mà có thông tin đăng nhập thì đăng nhập rồi gọi
+                    NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_ID];
+                    NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
+                    
+                    if (![AppUtil isNullOrEmpty: domain] && ![AppUtil isNullOrEmpty: port] && ![AppUtil isNullOrEmpty: USERNAME] && ![AppUtil isNullOrEmpty: port])
+                    {
+                        
+                    }else{
+                        //  reset value
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivity];
+                        [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivityName];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        
+                        [self.window makeToast:[localization localizedStringForKey:@"You have not signed your account yet"] duration:3.0 position:CSToastPositionCenter];
+                    }
+                }
+                else if (accState == eAccountOn) {
+                    NSString *displayName = [[NSUserDefaults standardUserDefaults] objectForKey:UserActivityName];
+                    //  Nếu SIP registration đang sẵn sàng thì gọi
+                    [SipUtil makeCallToPhoneNumber: phoneNumber displayName: displayName];
+                    
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivity];
+                    [[NSUserDefaults standardUserDefaults] removeObjectForKey:UserActivityName];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    
+                }
+                else{
+                    //  Chờ đăng ký SIP xong sẽ gọi
+                }
             }
         }
     }
@@ -804,8 +813,7 @@ AppDelegate      *app;
     
     pjsua_transport_config_default(&transportConfig);
     
-    transportConfig.port = 51000;
-    
+    //  transportConfig.port = 51000;
     pjsua_transport_create(PJSIP_TRANSPORT_UDP, &transportConfig, NULL);
     //  pjsua_transport_create(PJSIP_TRANSPORT_TCP, &transportConfig, NULL);
     
@@ -1022,15 +1030,6 @@ static void on_reg_state(pjsua_acc_id acc_id)
             [app getMissedCallFromServer];
             [app checkToCallPhoneNumberFromPhoneCallHistory];
         }
-        
-        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.alertBody = SFM(@"state: %d", info.status);
-        messageNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-        
         [[NSNotificationCenter defaultCenter] postNotificationName:notifRegistrationStateChange object:[NSNumber numberWithInt: info.status]];
     });
     PJ_UNUSED_ARG(acc_id);
@@ -1115,6 +1114,26 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     return nil;
 }
 
+- (void)tryToRefreshRegisterOneTime {
+    AccountState curState = [self checkSipStateOfAccount];
+    if (curState == eAccountOff) {
+        [self deleteSIPAccountDefault];
+        [self performSelector:@selector(tryToRegisterAgain) withObject:nil afterDelay:1.0];
+    }
+}
+
+- (void)tryToRegisterAgain {
+    NSString *account = USERNAME;
+    NSString *password = PASSWORD;
+    NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_ID];
+    NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
+    
+    if (![AppUtil isNullOrEmpty: account] && ![AppUtil isNullOrEmpty: password] && ![AppUtil isNullOrEmpty:domain] && ![AppUtil isNullOrEmpty: port])
+    {
+        NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:account, @"account", password, @"password", domain, @"domain", port, @"port", nil];
+        [self registerSIPAccountWithInfo: info];
+    }
+}
 
 - (void)registerSIPAccountWithInfo: (NSDictionary *)info {
     NSString *account = [info objectForKey:@"account"];
@@ -1147,21 +1166,22 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         cfg.cred_info[0].username = pj_str((char *)[account UTF8String]);
         cfg.cred_info[0].data_type = PJSIP_CRED_DATA_PLAIN_PASSWD;
         cfg.cred_info[0].data = pj_str((char *)[password UTF8String]);
-        cfg.ice_cfg_use=PJSUA_ICE_CONFIG_USE_DEFAULT;
+        cfg.ice_cfg.enable_ice = FALSE;
+        //  cfg.ice_cfg_use=PJSUA_ICE_CONFIG_USE_DEFAULT;
         //  disable IPV6
         cfg.ipv6_media_use = PJSUA_IPV6_DISABLED;
         cfg.reg_timeout = 20;
-        //  cfg.reg_retry_interval = 0; //  0 to disable re-retry register
+        cfg.reg_retry_interval = 0; //  0 to disable re-retry register
         
-//        cfg.sip_stun_use = PJSUA_STUN_USE_DISABLED;
-//        cfg.media_stun_use = PJSUA_STUN_USE_DISABLED;
+        cfg.sip_stun_use = PJSUA_STUN_USE_DISABLED;
+        cfg.media_stun_use = PJSUA_STUN_USE_DISABLED;
         
-        NSString *email = account;
-        pjsip_generic_string_hdr CustomHeader;
-        pj_str_t name = pj_str("Call-ID");
-        pj_str_t value = pj_str((char *)[email UTF8String]);
-        pjsip_generic_string_hdr_init2(&CustomHeader, &name, &value);
-        pj_list_push_back(&cfg.reg_hdr_list, &CustomHeader);
+//        NSString *email = account;
+//        pjsip_generic_string_hdr CustomHeader;
+//        pj_str_t name = pj_str("Call-ID");
+//        pj_str_t value = pj_str((char *)[email UTF8String]);
+//        pjsip_generic_string_hdr_init2(&CustomHeader, &name, &value);
+//        pj_list_push_back(&cfg.reg_hdr_list, &CustomHeader);
         
         pjsip_endpoint* endpoint = pjsua_get_pjsip_endpt();
         pj_dns_resolver* resolver;
@@ -1173,7 +1193,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         // Init transport config structure
         pjsua_transport_config trans_cfg;
         pjsua_transport_config_default(&trans_cfg);
-        //  trans_cfg.port = [port intValue];
+        trans_cfg.port = [port intValue];
         
         // Add UDP transport.
         status = pjsua_transport_create(PJSIP_TRANSPORT_UDP, &trans_cfg, NULL);
@@ -1202,22 +1222,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         pjsua_acc_id acc_id = pjsua_acc_get_default();
         if (pjsua_acc_is_valid(acc_id)) {
             pjsua_acc_set_registration(acc_id, 1);
-            
-            UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-            messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-            messageNotif.alertBody = SFM(@"refresh current account");
-            messageNotif.soundName = UILocalNotificationDefaultSoundName;
-            [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-        }else{
-            UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-            messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-            messageNotif.alertBody = SFM(@"account invalid");
-            messageNotif.soundName = UILocalNotificationDefaultSoundName;
-            [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
         }
     }else{
         [self tryToReRegisterToSIP];
@@ -1631,6 +1635,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
                 if ([sipAccIDs containsObject:[NSNumber numberWithInt: accId]]) {
                     [sipAccIDs removeObject:[NSNumber numberWithInt: accId]];
                 }
+                NSLog(@"---check: deleteSIPAccountDefault");
                 return TRUE;
             }else{
                 return FALSE;

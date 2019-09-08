@@ -158,7 +158,7 @@
 
 "Not enough informations to enable your account"        =   "Không đủ thông tin để kích hoạt lại tài khoản của bạn"
 "This feature have not supported yet. Please try later!" =  "Tính năng này chưa được hỗ trợ. Vui lòng thử lại sau!"
-
+"Can not make call. Your account was disabled!" =   "Không thể gọi. Tài khoản của bạn đang bị tắt!"
 
 
 

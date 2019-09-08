@@ -159,7 +159,7 @@
 
 "Not enough informations to enable your account"        =   "Not enough informations to enable your account"
 "This feature have not supported yet. Please try later!" =  "This feature have not supported yet. Please try later!"
-
+"Can not make call. Your account was disabled!" =   "Can not make call. Your account was disabled!"
 
 
 
