@@ -245,9 +245,17 @@
         lbStatus.text = [appDelegate.localization localizedStringForKey:@"No network"];
         lbStatus.textColor = UIColor.orangeColor;
     }else{
-        NSString *turnOff = [[NSUserDefaults standardUserDefaults] objectForKey:TURN_OFF_ACC];
-        if (turnOff == nil || ![turnOff isEqualToString:@"1"]) {
-            [appDelegate refreshSIPRegistration];
+        NSString *account = USERNAME;
+        NSString *password = PASSWORD;
+        NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_ID];
+        NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
+        
+        if (![AppUtil isNullOrEmpty: account] && ![AppUtil isNullOrEmpty: password] && ![AppUtil isNullOrEmpty:domain] && ![AppUtil isNullOrEmpty: port])
+        {
+            NSString *turnOff = [[NSUserDefaults standardUserDefaults] objectForKey:TURN_OFF_ACC];
+            if (turnOff == nil || ![turnOff isEqualToString:@"1"]) {
+                [appDelegate refreshSIPRegistration];
+            }
         }
     }
 }

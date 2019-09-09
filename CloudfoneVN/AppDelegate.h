@@ -95,7 +95,6 @@ typedef enum eTypeHistory{
 + (AppDelegate *)sharedInstance;
 - (void)enableSizeForBarButtonItem: (BOOL)enable;
 
-@property (nonatomic, assign) int numTryRegister;
 @property (nonatomic, strong) CallViewController *callViewController;
 @property (nonatomic, strong) DialerViewController *transferViewController;
 @property (nonatomic, strong) ProviderDelegate *del;

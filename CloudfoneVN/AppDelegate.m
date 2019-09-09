@@ -34,7 +34,7 @@
 @synthesize fontDesc, fontNormal, fontLarge, fontDescBold, fontLargeBold, fontNormalBold;
 @synthesize errorStyle, warningStyle, successStyle;
 @synthesize pbxContacts, contacts, isSyncing;
-@synthesize current_call_id, pjsipConfAudioId, remoteNumber, del, voipRegistry, callViewController, transferViewController, beepPlayer, ringbackPlayer, refreshingSIP, clearingSIP, sipAccIDs, numTryRegister;
+@synthesize current_call_id, pjsipConfAudioId, remoteNumber, del, voipRegistry, callViewController, transferViewController, beepPlayer, ringbackPlayer, refreshingSIP, clearingSIP, sipAccIDs;
 @synthesize webService, listNumber;
 @synthesize cropAvatar, dataCrop, fromImagePicker, splashScreen;
 
@@ -160,7 +160,6 @@ AppDelegate      *app;
     return YES;
 }
 
-
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -173,6 +172,7 @@ AppDelegate      *app;
     int num_call = pjsua_call_get_count();
     if (num_call == 0) {
         [self deleteSIPAccountDefault];
+        pjsua_destroy();
     }
 }
 
@@ -182,6 +182,8 @@ AppDelegate      *app;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     //  Kiểm tra thử đang có cuộc gọi hay không? Để kiểm tra trường hợp bấm gọi từ call history của thiết bị
+    [[UNUserNotificationCenter currentNotificationCenter] removeAllDeliveredNotifications];
+    
     int num_call = pjsua_call_get_count();
     if (num_call == 0) {
         NSString *turnOff = [[NSUserDefaults standardUserDefaults] objectForKey:TURN_OFF_ACC];
@@ -197,7 +199,14 @@ AppDelegate      *app;
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
         }else{
-            numTryRegister = 0;
+            UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+            messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+            messageNotif.alertBody = @"BecomeActive";
+            messageNotif.soundName = UILocalNotificationDefaultSoundName;
+            [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+            
             [self refreshSIPRegistration];
             
             AccountState accState = [self checkSipStateOfAccount];
@@ -903,6 +912,18 @@ static void on_call_state(pjsua_call_id call_id, pjsip_event *e)
         //  reset remoteNumber
         app.remoteNumber = @"";
         dispatch_async(dispatch_get_main_queue(), ^{
+            if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+                [app deleteSIPAccountDefault];
+                pjsua_destroy();
+                UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+                messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+                messageNotif.alertBody = SFM(@"pjsua_destroy: %d", [UIApplication sharedApplication].applicationState);
+                messageNotif.soundName = UILocalNotificationDefaultSoundName;
+                [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+            }
+            
             /** Initial call role (UAC == caller) */
             //  TRƯỜNG HỢP CHỈ DÀNH CHO MÌNH LÀ CALEE VÀ CUỘC GỌI CHƯA ĐƯỢC KẾT NỐI THÀNH CÔNG
             if (ci.role != PJSIP_ROLE_UAC && ci.role != PJSIP_UAC_ROLE && ci.last_status != PJSIP_SC_OK) {
@@ -1146,8 +1167,8 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         cfg.reg_timeout = 20;
         cfg.reg_retry_interval = 0; //  0 to disable re-retry register
         
-        cfg.sip_stun_use = PJSUA_STUN_USE_DISABLED;
-        cfg.media_stun_use = PJSUA_STUN_USE_DISABLED;
+//        cfg.sip_stun_use = PJSUA_STUN_USE_DISABLED;
+//        cfg.media_stun_use = PJSUA_STUN_USE_DISABLED;
         
 //        NSString *email = account;
 //        pjsip_generic_string_hdr CustomHeader;
@@ -1198,6 +1219,9 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         [self startPjsuaForApp];
         [self tryToReRegisterToSIP];
     }else{
+        if (pjsua_get_state() == PJSUA_STATE_NULL) {
+            [self startPjsuaForApp];
+        }
         [self tryToReRegisterToSIP];
     }
 }
