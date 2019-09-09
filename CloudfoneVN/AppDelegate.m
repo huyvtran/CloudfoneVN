@@ -991,24 +991,8 @@ static void on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew) {
     
     if (![AppUtil isNullOrEmpty: account] && ![AppUtil isNullOrEmpty: password] && ![AppUtil isNullOrEmpty:domain] && ![AppUtil isNullOrEmpty: port])
     {
-        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.alertBody = SFM(@"register with pjsua state = %d", pjsua_get_state());
-        messageNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-        
         NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:account, @"account", password, @"password", domain, @"domain", port, @"port", nil];
         [self registerSIPAccountWithInfo: info];
-    }else{
-        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.alertBody = @"Tài khoản không tồn tại";
-        messageNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
     }
 }
 
@@ -1031,14 +1015,6 @@ static void on_reg_state(pjsua_acc_id acc_id)
             [app checkToCallPhoneNumberFromPhoneCallHistory];
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:notifRegistrationStateChange object:[NSNumber numberWithInt: info.status]];
-        
-        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.alertBody = SFM(@"registration state: %d", info.status);
-        messageNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
     });
     PJ_UNUSED_ARG(acc_id);
     
@@ -1122,35 +1098,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     return nil;
 }
 
-- (void)tryToRefreshRegisterOneTime {
-    AccountState curState = [self checkSipStateOfAccount];
-    if (curState == eAccountOff) {
-        [self deleteSIPAccountDefault];
-        [self performSelector:@selector(tryToRegisterAgain) withObject:nil afterDelay:1.0];
-    }
-}
-
-- (void)tryToRegisterAgain {
-    NSString *account = USERNAME;
-    NSString *password = PASSWORD;
-    NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_ID];
-    NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
-    
-    if (![AppUtil isNullOrEmpty: account] && ![AppUtil isNullOrEmpty: password] && ![AppUtil isNullOrEmpty:domain] && ![AppUtil isNullOrEmpty: port])
-    {
-        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.alertBody = @"tryToRegisterAgain";
-        messageNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-        
-        NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:account, @"account", password, @"password", domain, @"domain", port, @"port", nil];
-        [self registerSIPAccountWithInfo: info];
-    }
-}
-
 - (void)registerSIPAccountWithInfo: (NSDictionary *)info {
     NSString *account = [info objectForKey:@"account"];
     NSString *domain = [info objectForKey:@"domain"];
@@ -1209,7 +1156,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         // Init transport config structure
         pjsua_transport_config trans_cfg;
         pjsua_transport_config_default(&trans_cfg);
-        trans_cfg.port = 5060;
+        //  trans_cfg.port = 5060;
         //  trans_cfg.port = [port intValue];
         
         // Add UDP transport.
@@ -1240,7 +1187,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         pjsua_destroy();
         [self startPjsuaForApp];
         [self tryToReRegisterToSIP];
-        //  [self performSelector:@selector(tryToReRegisterToSIP) withObject:nil afterDelay:2.0];
     }else{
         [self tryToReRegisterToSIP];
     }
@@ -1653,15 +1599,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
                 if ([sipAccIDs containsObject:[NSNumber numberWithInt: accId]]) {
                     [sipAccIDs removeObject:[NSNumber numberWithInt: accId]];
                 }
-                UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-                messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-                messageNotif.alertBody = @"deleteSIPAccountDefault";
-                messageNotif.soundName = UILocalNotificationDefaultSoundName;
-                [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-                
-                NSLog(@"---check: deleteSIPAccountDefault");
                 return TRUE;
             }else{
                 return FALSE;

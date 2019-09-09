@@ -125,14 +125,6 @@
 	[action fulfill];
     
     [[AppDelegate sharedInstance] hangupAllCall];
-    UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-    messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-    messageNotif.alertBody = SFM(@"app state: %ld", (long)[[UIApplication sharedApplication] applicationState]);
-    messageNotif.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-    
 }
 
 - (void)provider:(CXProvider *)provider performSetMutedCallAction:(nonnull CXSetMutedCallAction *)action {
