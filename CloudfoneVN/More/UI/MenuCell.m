@@ -19,13 +19,22 @@
     
     _lbTitle.font = [AppDelegate sharedInstance].fontNormal;
     
+    float size = 22.0;
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            size = 26.0;
+        }
+    }
+    
     [_iconImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(20);
         make.centerY.equalTo(self.mas_centerY);
-        make.width.height.mas_equalTo(22.0);
+        make.width.height.mas_equalTo(size);
     }];
     
     _lbTitle.textColor = UIColor.darkGrayColor;
+    _lbTitle.font = [AppDelegate sharedInstance].fontNormal;
     [_lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(_iconImage.mas_right).offset(10);
         make.right.equalTo(self).offset(-20);

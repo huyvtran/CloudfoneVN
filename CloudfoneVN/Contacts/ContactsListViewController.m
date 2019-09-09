@@ -239,6 +239,12 @@
     hIcon = 35.0;
     hSection = 35.0;
     hCell = 60.0;
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            hCell = 70.0;
+        }
+    }
     
     self.view.backgroundColor = UIColor.whiteColor;
     float hHeader = appDelegate.hStatus + appDelegate.hNav + 50.0;

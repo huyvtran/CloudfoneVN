@@ -107,7 +107,7 @@
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear: animated];
     [self requestAccessToMicroIfNot];
-    
+
     if (callDirection == OutgoingCall) {
         NSString *callState = [appDelegate getCallStateOfCurrentCall];
         if ([AppUtil isNullOrEmpty: callState])
@@ -117,7 +117,7 @@
 
             NSString *stringForCall = SFM(@"sip:%@@%@:%@", remoteNumber, domain, port);
             [appDelegate makeCallTo: stringForCall];
-            
+
             [appDelegate playRingbackTone];
         }
     }
@@ -240,6 +240,7 @@
     float wAvatar = 120.0;
     float hLabel = 25.0;
     float marginY = 15.0;
+    float hLabelName = 45.0;
     
     if (IS_IPHONE || IS_IPOD) {
         NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
@@ -259,13 +260,16 @@
         }else if ([deviceMode isEqualToString: Iphone6_Plus] || [deviceMode isEqualToString: Iphone6s_Plus] || [deviceMode isEqualToString: Iphone7_Plus1] || [deviceMode isEqualToString: Iphone7_Plus2] || [deviceMode isEqualToString: Iphone8_Plus1] || [deviceMode isEqualToString: Iphone8_Plus2])
         {
             //  Screen width: 414.000000 - Screen height: 736.000000
-            wAvatar = 130.0;
-            wSmallIcon = 60.0;
+            wAvatar = 120.0;
+            wSmallIcon = 75.0;
+            marginTopAvatar = 60.0;
             
         }else if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]){
             //  Screen width: 375.000000 - Screen height: 812.000000
             wAvatar = 150.0;
-            wSmallIcon = 58.0;
+            wSmallIcon = 80.0;
+            marginTopAvatar = 80.0;
+            hLabelName = 60.0;
             
         }else{
             wAvatar = 130.0;
@@ -286,10 +290,17 @@
         make.top.left.bottom.right.equalTo(viewCall);
     }];
     
+    float hSafeArea = 0;
+    if (@available(iOS 11.0, *)) {
+        UIWindow *window = UIApplication.sharedApplication.keyWindow;
+        //  CGFloat topPadding = window.safeAreaInsets.top;
+        hSafeArea = window.safeAreaInsets.bottom;
+    }
+    
     [icHangup setImage:[UIImage imageNamed:@"decline_call_hover"] forState:UIControlStateHighlighted];
     [icHangup mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(viewCall.mas_centerX);
-        make.bottom.equalTo(viewCall).offset(-20.0);
+        make.bottom.equalTo(viewCall).offset(-20.0-hSafeArea);
         make.width.height.mas_equalTo(wSmallIcon);
     }];
     
@@ -402,7 +413,7 @@
         make.left.equalTo(viewCall).offset(5.0);
         make.right.equalTo(viewCall).offset(-5.0);
         make.top.equalTo(imgAvatar.mas_bottom);
-        make.height.mas_equalTo(45.0);
+        make.height.mas_equalTo(hLabelName);
     }];
     
     //  number

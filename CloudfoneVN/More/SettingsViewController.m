@@ -12,6 +12,7 @@
 
 @interface SettingsViewController ()<UITableViewDataSource, UITableViewDelegate>{
     AppDelegate *appDelegate;
+    float hCell;
 }
 @end
 
@@ -40,6 +41,13 @@
 - (void)setupUIForView
 {
     self.view.backgroundColor = GRAY_230;
+    hCell = 60.0;
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            hCell = 70.0;
+        }
+    }
     
     [tbContent registerNib:[UINib nibWithNibName:@"SettingCell" bundle:nil] forCellReuseIdentifier:@"SettingCell"];
     tbContent.backgroundColor = UIColor.clearColor;
@@ -76,7 +84,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 55.0;
+    return hCell;
 }
 
 @end

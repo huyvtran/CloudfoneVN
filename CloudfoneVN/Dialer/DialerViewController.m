@@ -345,12 +345,12 @@
         make.top.left.bottom.right.equalTo(viewTop);
     }];
     
-    lbAccID.font = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
+    lbAccID.font = appDelegate.fontNormalBold;
     [lbAccID mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(viewTop).offset(hStatus);
         make.bottom.equalTo(viewTop);
         make.centerX.equalTo(viewTop.mas_centerX);
-        make.width.mas_equalTo(120);
+        make.width.mas_equalTo(80);
     }];
     
     [imgTopLogo mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -373,7 +373,7 @@
     //  Number view
     float hNumber = 100.0;
     float hTextField = 60.0;
-    if ([modelName isEqualToString: IphoneX_1] || [modelName isEqualToString: IphoneX_2] || [modelName isEqualToString: IphoneXR] || [modelName isEqualToString: IphoneXS] || [modelName isEqualToString: IphoneXS_Max1] || [modelName isEqualToString: IphoneXS_Max2] || [modelName isEqualToString: simulator])
+    if ([modelName isEqualToString: IphoneX_1] || [modelName isEqualToString: IphoneX_2] || [modelName isEqualToString: IphoneXR] || [modelName isEqualToString: IphoneXS] || [modelName isEqualToString: IphoneXS_Max1] || [modelName isEqualToString: IphoneXS_Max2])
     {
         hNumber = 120.0;
         hTextField = 80.0;

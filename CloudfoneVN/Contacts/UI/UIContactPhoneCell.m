@@ -16,6 +16,14 @@
     self.contentView.backgroundColor = UIColor.whiteColor;
     lbTitle.font = lbPhone.font = [AppDelegate sharedInstance].fontNormal;
     
+    float sizeIcon = 32.0;
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            sizeIcon = 36.0;
+        }
+    }
+    
     [lbTitle mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(20);
         make.top.bottom.equalTo(self);
@@ -27,11 +35,11 @@
     icCall.clipsToBounds = YES;
     icCall.layer.borderColor = GRAY_230.CGColor;
     icCall.layer.borderWidth = 3.0;
-    icCall.layer.cornerRadius = 32.0/2;
+    icCall.layer.cornerRadius = sizeIcon/2;
     [icCall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-10);
         make.centerY.equalTo(self.mas_centerY);
-        make.width.height.mas_equalTo(32.0);
+        make.width.height.mas_equalTo(sizeIcon);
     }];
     
     [lbPhone mas_makeConstraints:^(MASConstraintMaker *make) {

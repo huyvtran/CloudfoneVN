@@ -20,6 +20,7 @@
     NSMutableArray *listTitle;
     NSMutableArray *listIcon;
     float hInfo;
+    float hCell;
 }
 
 @end
@@ -45,8 +46,16 @@
 //  Cập nhật vị trí cho view
 - (void)autoLayoutForMainView {
     self.view.backgroundColor = GRAY_230;
-    //  Header view
     
+    hCell = 60.0;
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            hCell = 70.0;
+        }
+    }
+    
+    //  Header view
     hInfo = appDelegate.hStatus + 10 + 30 + 20 + 10;
     [viewHeader mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.right.equalTo(self.view);
@@ -234,7 +243,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60.0;
+    return hCell;
 }
 
 @end

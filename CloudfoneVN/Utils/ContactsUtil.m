@@ -20,7 +20,7 @@ AppDelegate *contactUtilAppDel;
 
 + (NSAttributedString *)getSearchValueFromResultForNewSearchMethod: (NSArray *)searchs
 {
-    UIFont *font = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
+    UIFont *font = contactUtilAppDel.fontNormalBold;
     NSMutableAttributedString *attrResult = [[NSMutableAttributedString alloc] init];
     
     if (searchs.count == 1) {

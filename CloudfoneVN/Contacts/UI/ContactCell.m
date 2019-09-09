@@ -36,6 +36,14 @@
     float marginLeft;
     float marginRight;
     
+    float sizeIcon = 40.0;
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            sizeIcon = 45.0;
+        }
+    }
+    
     if (IS_IPHONE || IS_IPOD) {
         marginRight = 25.0;
         marginLeft = 20.0;
@@ -49,7 +57,7 @@
     [icCall mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(self.mas_centerY);
         make.right.equalTo(self).offset(-marginRight);
-        make.width.height.mas_equalTo(40.0);
+        make.width.height.mas_equalTo(sizeIcon);
     }];
     
     name.backgroundColor = UIColor.clearColor;
@@ -74,9 +82,9 @@
         make.height.mas_equalTo(1.0);
     }];
     
-    name.font = [AppDelegate sharedInstance].fontLarge;
+    name.font = [AppDelegate sharedInstance].fontNormal;
     phone.font = [AppDelegate sharedInstance].fontDesc;
-    icCall.imageEdgeInsets = UIEdgeInsetsMake(8, 8, 8, 8);
+    icCall.imageEdgeInsets = UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

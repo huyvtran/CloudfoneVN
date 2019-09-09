@@ -155,6 +155,13 @@
     float hTextfield = 40.0;
     float hBTN = 45.0;
     
+    if (IS_IPHONE || IS_IPOD) {
+        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
+        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+            hTextfield = 45.0;
+        }
+    }
+    
     //  Current password
     lbCurrentPass.textColor = lbNewPass.textColor = lbConfirmPass.textColor = [UIColor colorWithRed:(80/255.0) green:(80/255.0) blue:(80/255.0) alpha:1.0];
     lbCurrentPass.font = tfCurrentPass.font = lbNewPass.font = tfNewPass.font = lbConfirmPass.font = tfConfirmPass.font = appDelegate.fontNormal;
