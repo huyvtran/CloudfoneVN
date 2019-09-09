@@ -52,25 +52,6 @@
     if (![AppUtil isNullOrEmpty:USERNAME]) {
         [[Crashlytics sharedInstance] setUserName: USERNAME];
     }
-    
-//    UIButton *test = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 100, 40)];
-//    test.backgroundColor = UIColor.blackColor;
-//    [self.view addSubview: test];
-//    [test addTarget:self action:@selector(testAction) forControlEvents:UIControlEventTouchUpInside];
-}
-
-- (void)testAction {
-    [appDelegate refreshSIPRegistration];
-    return;
-    
-    NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:@"nhcla150", @"account", @"cloudcall123", @"password", @"nhanhoa1.vfone.vn", @"domain", @"51000", @"port", nil];
-    [appDelegate registerSIPAccountWithInfo: info];
-    
-    [[NSUserDefaults standardUserDefaults] setObject:@"nhcla150" forKey:key_login];
-    [[NSUserDefaults standardUserDefaults] setObject:@"cloudcall123" forKey:key_password];
-    [[NSUserDefaults standardUserDefaults] setObject:@"nhanhoa1.vfone.vn" forKey:PBX_ID];
-    [[NSUserDefaults standardUserDefaults] setObject:@"51000" forKey:PBX_PORT];
-    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -247,8 +228,13 @@
                 [self progessSomethingsWhenEnableAccountSuccessfully];
             }
         }else{
-            lbStatus.text = [appDelegate.localization localizedStringForKey:@"Offline"];
-            lbStatus.textColor = UIColor.orangeColor;
+            if (![DeviceUtil checkNetworkAvailable]) {
+                lbStatus.text = [appDelegate.localization localizedStringForKey:@"No network"];
+                lbStatus.textColor = UIColor.orangeColor;
+            }else{
+                lbStatus.text = [appDelegate.localization localizedStringForKey:@"Offline"];
+                lbStatus.textColor = UIColor.orangeColor;
+            }
         }
     }
 }
@@ -259,7 +245,10 @@
         lbStatus.text = [appDelegate.localization localizedStringForKey:@"No network"];
         lbStatus.textColor = UIColor.orangeColor;
     }else{
-        //  [self checkAccountStateForApp];
+        NSString *turnOff = [[NSUserDefaults standardUserDefaults] objectForKey:TURN_OFF_ACC];
+        if (turnOff == nil || ![turnOff isEqualToString:@"1"]) {
+            [appDelegate refreshSIPRegistration];
+        }
     }
 }
 

@@ -983,6 +983,16 @@ static void on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew) {
     return FALSE;
 }
 
+- (void)refreshCurrentSIPRegistrationState {
+    int numAccount = pjsua_acc_get_count();
+    if (numAccount > 0) {
+        pjsua_acc_id acc_id = pjsua_acc_get_default();
+        if (pjsua_acc_is_valid(acc_id)) {
+            pjsua_acc_set_registration(acc_id, 1);
+        }
+    }
+}
+
 - (void)tryToReRegisterToSIP {
     NSString *account = USERNAME;
     NSString *password = PASSWORD;
@@ -1190,10 +1200,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     }else{
         [self tryToReRegisterToSIP];
     }
-}
-
-- (void)startPJThread {
-    
 }
 
 - (void)makeCallTo: (NSString *)strCall {

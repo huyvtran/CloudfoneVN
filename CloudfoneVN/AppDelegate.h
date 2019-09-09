@@ -112,6 +112,7 @@ typedef enum eTypeHistory{
 - (void)stopRingbackTone;
 - (void)checkCallInfo;
 
+- (void)refreshCurrentSIPRegistrationState;
 - (BOOL)turnOfCurrentAccountDefault: (BOOL)turnOff;
 - (void)tryToReRegisterToSIP;
 - (void)registerSIPAccountWithInfo: (NSDictionary *)info;

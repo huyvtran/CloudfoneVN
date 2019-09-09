@@ -325,7 +325,8 @@ HMLocalization *dbUtilLocalization;
 
 + (NSString *)getLastCallOfUser {
     NSString *phone = @"";
-    NSString *tSQL = [NSString stringWithFormat:@"SELECT phone_number FROM history WHERE my_sip = '%@' AND call_direction = '%@' AND sipURI NOT LIKE '%%%@%%'  ORDER BY _id DESC LIMIT 0,1", USERNAME, outgoing_call, hotline];
+    //  NSString *tSQL = [NSString stringWithFormat:@"SELECT phone_number FROM history WHERE my_sip = '%@' AND call_direction = '%@' AND sipURI NOT LIKE '%%%@%%'  ORDER BY _id DESC LIMIT 0,1", USERNAME, outgoing_call, hotline];
+    NSString *tSQL = [NSString stringWithFormat:@"SELECT phone_number FROM history WHERE my_sip = '%@' AND call_direction = '%@' ORDER BY _id DESC LIMIT 0,1", USERNAME, outgoing_call];
     FMResultSet *rs = [dbUtilAppDel.database executeQuery: tSQL];
     while ([rs next]) {
         NSDictionary *rsDict = [rs resultDictionary];
