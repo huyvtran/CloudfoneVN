@@ -679,32 +679,27 @@ AppDelegate      *app;
             
         }else if ([deviceMode isEqualToString: Iphone6_Plus] || [deviceMode isEqualToString: Iphone6s_Plus] || [deviceMode isEqualToString: Iphone7_Plus1] || [deviceMode isEqualToString: Iphone7_Plus2] || [deviceMode isEqualToString: Iphone8_Plus1] || [deviceMode isEqualToString: Iphone8_Plus2])
         {
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
+            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
             
-        }else if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS]){
+        }else if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2]){
             //  Screen width: 375.000000 - Screen height: 812.000000
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
+            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
             
-        }else if ([deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2]){
-            //  Screen width: 375.000000 - Screen height: 812.000000
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
-            
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
         }else{
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
             fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
             
             fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
@@ -712,8 +707,13 @@ AppDelegate      *app;
             fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
         }
     }else{
-        fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
+        fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
+        fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
         fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
+        
+        fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
+        fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
+        fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
     }
 }
 
