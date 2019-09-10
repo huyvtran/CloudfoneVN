@@ -155,6 +155,7 @@
     tfSearch.text = @"";
     icClear.hidden = tbPBXContacts.hidden = TRUE;
     tbAllContacts.hidden = FALSE;
+    tbPBXContacts.hidden = lbNoPBXContacts.hidden = TRUE;
     
     if (!appDelegate.contactLoaded) {
         tbAllContacts.hidden = TRUE;
@@ -180,6 +181,7 @@
     tfSearch.text = @"";
     icClear.hidden = tbAllContacts.hidden = TRUE;
     tbPBXContacts.hidden = FALSE;
+    tbAllContacts.hidden = lbNoAllContacts.hidden = TRUE;
     
     [self checkToShowSyncPBXContacts];
     

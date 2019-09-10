@@ -192,13 +192,13 @@
                 [appDelegate hangupAllCall];
             }
         }];
-        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted){
-            if (granted) {
-                NSLog(@"granted");
-            } else {
-                [appDelegate hangupAllCall];
-            }
-        }];
+//        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted){
+//            if (granted) {
+//                NSLog(@"granted");
+//            } else {
+//                [appDelegate hangupAllCall];
+//            }
+//        }];
     }
 }
 

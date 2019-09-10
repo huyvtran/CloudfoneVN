@@ -157,6 +157,17 @@ AppDelegate      *app;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:)
                                                  name:kReachabilityChangedNotification object:nil];
     
+    //show warning Microphone
+    if (IS_IOS7) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted){
+            if (granted) {
+                NSLog(@"granted");
+            } else {
+                NSLog(@"failed");
+            }
+        }];
+    }
+    
     return YES;
 }
 
@@ -199,14 +210,6 @@ AppDelegate      *app;
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
         }else{
-            UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-            messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-            messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-            messageNotif.alertBody = @"BecomeActive";
-            messageNotif.soundName = UILocalNotificationDefaultSoundName;
-            [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-            
             [self refreshSIPRegistration];
             
             AccountState accState = [self checkSipStateOfAccount];
@@ -915,13 +918,6 @@ static void on_call_state(pjsua_call_id call_id, pjsip_event *e)
             if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
                 [app deleteSIPAccountDefault];
                 pjsua_destroy();
-                UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-                messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-                messageNotif.alertBody = SFM(@"pjsua_destroy: %d", [UIApplication sharedApplication].applicationState);
-                messageNotif.soundName = UILocalNotificationDefaultSoundName;
-                [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
             }
             
             /** Initial call role (UAC == caller) */

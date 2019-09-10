@@ -19,7 +19,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -44,9 +44,9 @@
 	<key>NSCameraUsageDescription</key>
 	<string>This application need access to your camera to share photos with your friends and customize avatars</string>
 	<key>NSContactsUsageDescription</key>
-	<string>This application need access to Contact to make calls with your friends</string>
+	<string>Để thực hiện cuộc gọi với bạn bè một cách dễ dàng</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This application need access to your microphone to make calls with your friends</string>
+	<string>Ứng dụng muốn truy cập microphone của bạn để thực hiện cuộc gọi với bạn bè.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Share photos with your friends and customize avatars</string>
 	<key>NSPhotoLibraryUsageDescription</key>
