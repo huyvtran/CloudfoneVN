@@ -35,7 +35,7 @@
 @synthesize errorStyle, warningStyle, successStyle;
 @synthesize pbxContacts, contacts, isSyncing;
 @synthesize current_call_id, pjsipConfAudioId, remoteNumber, del, voipRegistry, callViewController, transferViewController, beepPlayer, ringbackPlayer, refreshingSIP, clearingSIP, sipAccIDs;
-@synthesize webService, listNumber;
+@synthesize webService, listNumber, numTryRegister;
 @synthesize cropAvatar, dataCrop, fromImagePicker, splashScreen;
 
 AppDelegate      *app;
@@ -56,6 +56,7 @@ AppDelegate      *app;
     
     webService = [[WebServices alloc] init];
     webService.delegate = self;
+    numTryRegister = 0;
     
     listNumber = [[NSArray alloc] initWithObjects: @"+", @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
     sipAccIDs = [[NSMutableArray alloc] init];
@@ -835,6 +836,14 @@ AppDelegate      *app;
 //  Callback called by the library upon receiving incoming call
 static void on_incoming_call(pjsua_acc_id acc_id, pjsua_call_id call_id, pjsip_rx_data *rdata)
 {
+    UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+    messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+    messageNotif.alertBody = @"on_incoming_call";
+    messageNotif.soundName = UILocalNotificationDefaultSoundName;
+    [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+    
     pjsua_call_info ci;
     PJ_UNUSED_ARG(acc_id);
     PJ_UNUSED_ARG(rdata);
@@ -1020,6 +1029,15 @@ static void on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew) {
     {
         NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:account, @"account", password, @"password", domain, @"domain", port, @"port", nil];
         [self registerSIPAccountWithInfo: info];
+        
+    }else {
+        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.alertBody = @"Account not exists";
+        messageNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
     }
 }
 
@@ -1030,8 +1048,8 @@ static void on_reg_state(pjsua_acc_id acc_id)
     pjsua_acc_get_info(acc_id, &info);
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"registration state: %d", info.status);
         if (info.status == PJSIP_SC_OK) {
+            app.numTryRegister = 0;
             //  Lưu acc_id khi register thành công (vì bây giờ chưa tìm được cách lấy ds account từ PJSIP)
             if (![app.sipAccIDs containsObject:[NSNumber numberWithInt:acc_id]]) {
                 [app.sipAccIDs addObject:[NSNumber numberWithInt:acc_id]];
@@ -1040,6 +1058,19 @@ static void on_reg_state(pjsua_acc_id acc_id)
             //  get missed callfrom server
             [app getMissedCallFromServer];
             [app checkToCallPhoneNumberFromPhoneCallHistory];
+        }else{
+            if (app.numTryRegister < 3 && [app checkSipStateOfAccount] != eAccountOn) {
+                UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+                messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+                messageNotif.alertBody = SFM(@"Try to register SIP: %d", info.status);
+                messageNotif.soundName = UILocalNotificationDefaultSoundName;
+                [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+                
+                app.numTryRegister++;
+                [app refreshSIPRegistration];
+            }
         }
         [[NSNotificationCenter defaultCenter] postNotificationName:notifRegistrationStateChange object:[NSNumber numberWithInt: info.status]];
     });
@@ -1156,8 +1187,8 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         cfg.cred_info[0].username = pj_str((char *)[account UTF8String]);
         cfg.cred_info[0].data_type = PJSIP_CRED_DATA_PLAIN_PASSWD;
         cfg.cred_info[0].data = pj_str((char *)[password UTF8String]);
-        cfg.ice_cfg.enable_ice = FALSE;
-        //  cfg.ice_cfg_use=PJSUA_ICE_CONFIG_USE_DEFAULT;
+        //  cfg.ice_cfg.enable_ice = FALSE;
+        cfg.ice_cfg_use=PJSUA_ICE_CONFIG_USE_DEFAULT;
         //  disable IPV6
         cfg.ipv6_media_use = PJSUA_IPV6_DISABLED;
         cfg.reg_timeout = 20;
@@ -1208,6 +1239,12 @@ static void on_call_transfer_status(pjsua_call_id call_id,
 
 - (void)refreshSIPRegistration
 {
+    [self deleteSIPAccountDefault];
+    pjsua_destroy();
+    [self startPjsuaForApp];
+    [self tryToReRegisterToSIP];
+    return;
+    
     int numAccount = pjsua_acc_get_count();
     if (numAccount > 0) {
         [self deleteSIPAccountDefault];
@@ -1878,19 +1915,14 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     NSDictionary *aps = [userInfo objectForKey:@"aps"];
     if (aps != nil)
     {
-        NSDictionary *alert = [aps objectForKey:@"alert"];
         [self refreshSIPRegistration];
+        numTryRegister = 0;
+        
+        NSDictionary *alert = [aps objectForKey:@"alert"];
         
         NSString *loc_key = [aps objectForKey:@"loc-key"];
         NSString *callId = [aps objectForKey:@"call-id"];
-        
-        NSString *caller = callId;
-//        PhoneObject *contact = [ContactsUtil getContactPhoneObjectWithNumber: callId];
-//        if (![AppUtil isNullOrEmpty: contact.name]) {
-//            caller = contact.name;
-//        }
-        
-        NSString *content = [NSString stringWithFormat:[localization localizedStringForKey:@"You have a call from %@"], caller];
+        NSString *content = [NSString stringWithFormat:[localization localizedStringForKey:@"You have a call from %@"], callId];
         
         UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
         messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
@@ -1899,6 +1931,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         messageNotif.alertBody = content;
         messageNotif.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+        
         
         
         //            NSString *loc_key = [aps objectForKey:@"loc-key"];

@@ -62,6 +62,7 @@ typedef enum eTypeHistory{
 
 @property (nonatomic, strong) WebServices *webService;
 @property (nonatomic, strong) NSArray *listNumber;
+@property (nonatomic, assign) int numTryRegister;
 
 @property (nonatomic, strong) NSString *logFilePath;
 @property (nonatomic, assign) BOOL contactLoaded;
