@@ -836,14 +836,6 @@ AppDelegate      *app;
 //  Callback called by the library upon receiving incoming call
 static void on_incoming_call(pjsua_acc_id acc_id, pjsua_call_id call_id, pjsip_rx_data *rdata)
 {
-    UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-    messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-    messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-    messageNotif.alertBody = @"on_incoming_call";
-    messageNotif.soundName = UILocalNotificationDefaultSoundName;
-    [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-    
     pjsua_call_info ci;
     PJ_UNUSED_ARG(acc_id);
     PJ_UNUSED_ARG(rdata);
@@ -1030,14 +1022,6 @@ static void on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew) {
         NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:account, @"account", password, @"password", domain, @"domain", port, @"port", nil];
         [self registerSIPAccountWithInfo: info];
         
-    }else {
-        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-        messageNotif.alertBody = @"Account not exists";
-        messageNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
     }
 }
 
@@ -1048,6 +1032,14 @@ static void on_reg_state(pjsua_acc_id acc_id)
     pjsua_acc_get_info(acc_id, &info);
     
     dispatch_async(dispatch_get_main_queue(), ^{
+        UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
+        messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.timeZone = [NSTimeZone defaultTimeZone];
+        messageNotif.alertBody = SFM(@"Registration state: %d", info.status);
+        messageNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
+        
         if (info.status == PJSIP_SC_OK) {
             app.numTryRegister = 0;
             //  Lưu acc_id khi register thành công (vì bây giờ chưa tìm được cách lấy ds account từ PJSIP)
@@ -1060,14 +1052,6 @@ static void on_reg_state(pjsua_acc_id acc_id)
             [app checkToCallPhoneNumberFromPhoneCallHistory];
         }else{
             if (app.numTryRegister < 3 && [app checkSipStateOfAccount] != eAccountOn) {
-                UILocalNotification *messageNotif = [[UILocalNotification alloc] init];
-                messageNotif.fireDate = [NSDate dateWithTimeIntervalSinceNow: 0.1];
-                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-                messageNotif.timeZone = [NSTimeZone defaultTimeZone];
-                messageNotif.alertBody = SFM(@"Try to register SIP: %d", info.status);
-                messageNotif.soundName = UILocalNotificationDefaultSoundName;
-                [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-                
                 app.numTryRegister++;
                 [app refreshSIPRegistration];
             }
@@ -1931,8 +1915,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         messageNotif.alertBody = content;
         messageNotif.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] scheduleLocalNotification: messageNotif];
-        
-        
         
         //            NSString *loc_key = [aps objectForKey:@"loc-key"];
         //            NSString *callId = [aps objectForKey:@"call-id"];
