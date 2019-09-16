@@ -371,7 +371,13 @@
     [ProgressHUD backgroundColor: ProgressHUD_BG];
     [ProgressHUD show:[appDelegate.localization localizedStringForKey:@"Please wait..."] Interaction:NO];
     
-    [self getInfoForPBXWithServerName: tfServerID.text];
+    BOOL result = [appDelegate deleteSIPAccountDefault];
+    if (result) {
+        [self getInfoForPBXWithServerName: tfServerID.text];
+        
+    }else{
+        [self.view makeToast:@"Can not remove current account. Please try again!" duration:2.0 position:CSToastPositionCenter style:appDelegate.errorStyle];
+    }
 }
 
 - (void)checkToClearSIPAccount {
@@ -415,9 +421,6 @@
             //  Remove observer để tránh trường hợp refresh register mà show thông báo
             [self registerObserverForSIPStateChange: FALSE];
             
-            //  Sau khi register thành công thì xoá các acc đã login trc đó
-            [appDelegate checkToClearAllAccRegisteredBefore];
-            
             //  registration successfully
             if (![AppUtil isNullOrEmpty: appDelegate.deviceToken] && ![tfServerID.text isEqualToString:@""] && ![tfAccount.text isEqualToString:@""]) {
                 [self updateCustomerTokenIOSForPBX: tfServerID.text andUsername: tfAccount.text withTokenValue:appDelegate.deviceToken];
@@ -434,7 +437,7 @@
             [self registerObserverForSIPStateChange: FALSE];
             
             [ProgressHUD dismiss];
-            [appDelegate removeAccIDWhenRegisterFailed];
+            [appDelegate deleteSIPAccountDefault];
             
             if (registrationCode == 401) {
                 //  PJSIP_SC_UNAUTHORIZED
@@ -452,16 +455,12 @@
 }
 
 - (void)failedToRegisterToSIPAccount {
-    
-    
-//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:PBX_SERVER];
-//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:PBX_ID];
-//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:PBX_PORT];
-//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:key_login];
-//    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:key_password];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
-    
-    
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:PBX_SERVER];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:PBX_ID];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:PBX_PORT];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:key_login];
+    [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:key_password];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 
@@ -619,6 +618,15 @@
     if (![AppUtil isNullOrEmpty: domainValue] && ![AppUtil isNullOrEmpty: portValue] && ![AppUtil isNullOrEmpty: server])
     {
         [self registerObserverForSIPStateChange: TRUE];
+        //  Nếu port của tài khoản hiện tại khác port mới thì cần start lại pjsua
+        NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
+        if (![AppUtil isNullOrEmpty: port] && [port isEqualToString: portValue]) {
+            [[NSUserDefaults standardUserDefaults] setObject:portValue forKey:PBX_PORT];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            [appDelegate restartPjsuaIfNeed];
+        }
+        
         NSDictionary *info = [[NSDictionary alloc] initWithObjectsAndKeys:domainValue, @"domain", tfAccount.text, @"account", tfPassword.text, @"password", portValue, @"port", nil];
         [appDelegate registerSIPAccountWithInfo:info];
         
@@ -665,8 +673,13 @@
             tfServerID.text = server;
             tfPassword.text = password;
             
-            //  [appDelegate checkSipStateOfAccount];
-            [self getInfoForPBXWithServerName: server];
+            BOOL result = [appDelegate deleteSIPAccountDefault];
+            if (result) {
+                [self getInfoForPBXWithServerName: server];
+                
+            }else{
+                [self.view makeToast:@"Can not remove current account. Please try again!" duration:2.0 position:CSToastPositionCenter style:appDelegate.errorStyle];
+            }
         }
     }else{
         [ProgressHUD dismiss];

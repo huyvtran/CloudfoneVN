@@ -34,7 +34,7 @@
 @synthesize fontDesc, fontNormal, fontLarge, fontDescBold, fontLargeBold, fontNormalBold;
 @synthesize errorStyle, warningStyle, successStyle;
 @synthesize pbxContacts, contacts, isSyncing;
-@synthesize current_call_id, pjsipConfAudioId, remoteNumber, del, voipRegistry, callViewController, transferViewController, beepPlayer, ringbackPlayer, refreshingSIP, clearingSIP, sipAccIDs;
+@synthesize current_call_id, pjsipConfAudioId, remoteNumber, del, voipRegistry, callViewController, transferViewController, beepPlayer, ringbackPlayer, refreshingSIP, clearingSIP;
 @synthesize webService, listNumber, numTryRegister;
 @synthesize cropAvatar, dataCrop, fromImagePicker, splashScreen;
 
@@ -59,7 +59,6 @@ AppDelegate      *app;
     numTryRegister = 0;
     
     listNumber = [[NSArray alloc] initWithObjects: @"+", @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", nil];
-    sipAccIDs = [[NSMutableArray alloc] init];
     
     NSString *version = [AppUtil getAppVersionWithBuildVersion: YES];
     if (IS_IPHONE || IS_IPOD) {
@@ -664,57 +663,57 @@ AppDelegate      *app;
             fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:17.0];
             fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:19.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:17.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:15.0];
             
         }else if ([deviceMode isEqualToString: Iphone6] || [deviceMode isEqualToString: Iphone6s] || [deviceMode isEqualToString: Iphone7_1] || [deviceMode isEqualToString: Iphone7_2] || [deviceMode isEqualToString: Iphone8_1] || [deviceMode isEqualToString: Iphone8_2])
         {
-            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:19.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:17.0];
+            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:19.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:17.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:15.0];
             
         }else if ([deviceMode isEqualToString: Iphone6_Plus] || [deviceMode isEqualToString: Iphone6s_Plus] || [deviceMode isEqualToString: Iphone7_Plus1] || [deviceMode isEqualToString: Iphone7_Plus2] || [deviceMode isEqualToString: Iphone8_Plus1] || [deviceMode isEqualToString: Iphone8_Plus2])
         {
-            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
+            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:22.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
             
         }else if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2]){
             //  Screen width: 375.000000 - Screen height: 812.000000
-            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
+            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:22.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
             
         }else{
-            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
+            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
+            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
+            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
             
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
+            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:22.0];
+            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
+            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
         }
     }else{
-        fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-        fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:16.0];
-        fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:14.0];
+        fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
+        fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
+        fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
         
-        fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-        fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:16.0];
-        fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:14.0];
+        fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:22.0];
+        fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
+        fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
     }
 }
 
@@ -825,12 +824,33 @@ AppDelegate      *app;
     pjsua_transport_config transportConfig;
     
     pjsua_transport_config_default(&transportConfig);
-    
-    //  transportConfig.port = 51000;
+    NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
+    if (![AppUtil isNullOrEmpty: port]) {
+        transportConfig.port = [port intValue];
+    }else{
+        transportConfig.port = 51000;
+    }
     pjsua_transport_create(PJSIP_TRANSPORT_UDP, &transportConfig, NULL);
     //  pjsua_transport_create(PJSIP_TRANSPORT_TCP, &transportConfig, NULL);
     
     pjsua_start();
+}
+
+- (void)refreshSIPAccountRegistrationState {
+    int numAccount = pjsua_acc_get_count();
+    if (numAccount > 0) {
+        pjsua_acc_id acc_id = pjsua_acc_get_default();
+        if (pjsua_acc_is_valid(acc_id)) {
+            pjsua_acc_set_registration(acc_id, 1);
+        }
+    }
+}
+
+- (void)restartPjsuaIfNeed {
+    if (pjsua_get_state() != PJSUA_STATE_NULL) {
+        pjsua_destroy();
+    }
+    [self startPjsuaForApp];
 }
 
 //  Callback called by the library upon receiving incoming call
@@ -1001,16 +1021,6 @@ static void on_reg_started(pjsua_acc_id acc_id, pj_bool_t renew) {
     return FALSE;
 }
 
-- (void)refreshCurrentSIPRegistrationState {
-    int numAccount = pjsua_acc_get_count();
-    if (numAccount > 0) {
-        pjsua_acc_id acc_id = pjsua_acc_get_default();
-        if (pjsua_acc_is_valid(acc_id)) {
-            pjsua_acc_set_registration(acc_id, 1);
-        }
-    }
-}
-
 - (void)tryToReRegisterToSIP {
     NSString *account = USERNAME;
     NSString *password = PASSWORD;
@@ -1042,10 +1052,6 @@ static void on_reg_state(pjsua_acc_id acc_id)
         
         if (info.status == PJSIP_SC_OK) {
             app.numTryRegister = 0;
-            //  Lưu acc_id khi register thành công (vì bây giờ chưa tìm được cách lấy ds account từ PJSIP)
-            if (![app.sipAccIDs containsObject:[NSNumber numberWithInt:acc_id]]) {
-                [app.sipAccIDs addObject:[NSNumber numberWithInt:acc_id]];
-            }
             
             //  get missed callfrom server
             [app getMissedCallFromServer];
@@ -1178,15 +1184,12 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         cfg.reg_timeout = 20;
         cfg.reg_retry_interval = 0; //  0 to disable re-retry register
         
-//        cfg.sip_stun_use = PJSUA_STUN_USE_DISABLED;
-//        cfg.media_stun_use = PJSUA_STUN_USE_DISABLED;
-        
-//        NSString *email = account;
-//        pjsip_generic_string_hdr CustomHeader;
-//        pj_str_t name = pj_str("Call-ID");
-//        pj_str_t value = pj_str((char *)[email UTF8String]);
-//        pjsip_generic_string_hdr_init2(&CustomHeader, &name, &value);
-//        pj_list_push_back(&cfg.reg_hdr_list, &CustomHeader);
+        NSString *strAgent = @"CloudFone";
+        pjsip_generic_string_hdr CustomHeader;
+        pj_str_t name = pj_str("User-Agent");
+        pj_str_t value = pj_str((char *)[strAgent UTF8String]);
+        pjsip_generic_string_hdr_init2(&CustomHeader, &name, &value);
+        pj_list_push_back(&cfg.reg_hdr_list, &CustomHeader);
         
         pjsip_endpoint* endpoint = pjsua_get_pjsip_endpt();
         pj_dns_resolver* resolver;
@@ -1227,20 +1230,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     pjsua_destroy();
     [self startPjsuaForApp];
     [self tryToReRegisterToSIP];
-    return;
-    
-    int numAccount = pjsua_acc_get_count();
-    if (numAccount > 0) {
-        [self deleteSIPAccountDefault];
-        pjsua_destroy();
-        [self startPjsuaForApp];
-        [self tryToReRegisterToSIP];
-    }else{
-        if (pjsua_get_state() == PJSUA_STATE_NULL) {
-            [self startPjsuaForApp];
-        }
-        [self tryToReRegisterToSIP];
-    }
 }
 
 - (void)makeCallTo: (NSString *)strCall {
@@ -1564,25 +1553,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
 }
 
 #pragma mark - FOR ACCOUNT
-- (void)checkToClearAllAccRegisteredBefore {
-    int numAccount = pjsua_acc_get_count();
-    if (numAccount > 0) {
-        pjsua_acc_id acc_id = pjsua_acc_get_default();
-        if (pjsua_acc_is_valid(acc_id)) {
-            for (int index=0; index<sipAccIDs.count; index++) {
-                pjsua_acc_id remove_acc_id = [[sipAccIDs objectAtIndex: index] intValue];
-                if ([sipAccIDs containsObject:[NSNumber numberWithInt: remove_acc_id]] && acc_id != remove_acc_id) {
-                    [sipAccIDs removeObject:[NSNumber numberWithInt: remove_acc_id]];
-                    if (pjsua_acc_is_valid(remove_acc_id)) {
-                        pjsua_acc_del(remove_acc_id);
-                    }
-                }
-            }
-        }
-    }else{
-        [sipAccIDs removeAllObjects];
-    }
-}
+
 - (AccountState)checkSipStateOfAccount {
     int numAccount = pjsua_acc_get_count();
     if (numAccount > 0) {
@@ -1619,23 +1590,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     }
 }
 
-- (void)removeAccIDWhenRegisterFailed {
-    int numAccount = pjsua_acc_get_count();
-    if (numAccount > 0) {
-        pjsua_acc_id acc_id = pjsua_acc_get_default();
-        pjsua_acc_info info;
-        pjsua_acc_get_info(acc_id, &info);
-        if (info.status != PJSIP_SC_OK) {
-            pj_status_t status = pjsua_acc_del(acc_id);
-            if (status == PJ_SUCCESS) {
-                if ([sipAccIDs containsObject:[NSNumber numberWithInt: acc_id]]) {
-                    [sipAccIDs removeObject:[NSNumber numberWithInt: acc_id]];
-                }
-            }
-        }
-    }
-}
-
 - (BOOL)deleteSIPAccountDefault {
     int numAccount = pjsua_acc_get_count();
     if (numAccount > 0) {
@@ -1643,9 +1597,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         if (pjsua_acc_is_valid(accId)) {
             pj_status_t status = pjsua_acc_del(accId);
             if (status == PJ_SUCCESS) {
-                if ([sipAccIDs containsObject:[NSNumber numberWithInt: accId]]) {
-                    [sipAccIDs removeObject:[NSNumber numberWithInt: accId]];
-                }
                 return TRUE;
             }else{
                 return FALSE;

@@ -282,3 +282,4 @@
 "Hide" = "Hide"
 
 "Register PBX failed. Please check your account!" = "Register PBX failed. Please check your account!";
+"Can not remove current account. Please try again" = "Can not remove current account. Please try again"

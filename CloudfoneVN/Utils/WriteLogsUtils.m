@@ -61,6 +61,7 @@ AppDelegate *writeLogUtilDel;
 
 + (void)writeLogContent: (NSString *)logContent
 {
+    return;
     if(![[NSFileManager defaultManager] fileExistsAtPath:writeLogUtilDel.logFilePath]) {
         [[NSFileManager defaultManager] createFileAtPath:writeLogUtilDel.logFilePath contents:nil attributes:nil];
     }

@@ -283,4 +283,5 @@
 "Do you want to call to hotline for assistance?" = "Bạn có muốn gọi đến đường dây nóng của chúng tôi để được hỗ trợ?"
 "Hide" = "Ẩn"
 
-"Register PBX failed. Please check your account!" = "Đăng ký thất bại. Vui lòng kiểm tra lại tài khoản của bạn!";
+"Register PBX failed. Please check your account!" = "Đăng ký thất bại. Vui lòng kiểm tra lại tài khoản của bạn!"
+"Can not remove current account. Please try again!" = "Không thể đăng xuất tài khoản hiện tại. Vui lòng thử lại!"

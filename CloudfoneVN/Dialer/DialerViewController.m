@@ -726,7 +726,7 @@
     lbStatus.text = [appDelegate.localization localizedStringForKey:@"Connecting"];
     lbStatus.textColor = UIColor.whiteColor;
     
-    [appDelegate refreshSIPRegistration];
+    [appDelegate refreshSIPAccountRegistrationState];
 }
 
 - (void)goToSettingsAccountView {

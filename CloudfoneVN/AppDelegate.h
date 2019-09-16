@@ -107,18 +107,14 @@ typedef enum eTypeHistory{
 @property (nonatomic, strong) AVAudioPlayer *ringbackPlayer;
 @property (nonatomic, assign) BOOL refreshingSIP;
 @property (nonatomic, assign) BOOL clearingSIP;
-@property (nonatomic, strong) NSMutableArray *sipAccIDs;
 - (void)playRingbackTone;
 - (void)stopRingbackTone;
 - (void)checkCallInfo;
 
-- (void)refreshCurrentSIPRegistrationState;
 - (BOOL)turnOfCurrentAccountDefault: (BOOL)turnOff;
 - (void)tryToReRegisterToSIP;
 - (void)registerSIPAccountWithInfo: (NSDictionary *)info;
-- (void)checkToClearAllAccRegisteredBefore;
 - (AccountState)checkSipStateOfAccount;
-- (void)removeAccIDWhenRegisterFailed;
 - (BOOL)deleteSIPAccountDefault;
 - (void)makeCallTo: (NSString *)strCall;
 - (void)transferCallToUserWithNumber: (NSString *)number;
@@ -140,7 +136,8 @@ typedef enum eTypeHistory{
 - (void)showTransferCallView;
 - (void)hideTransferCallView;
 - (NSString *)getCallStateOfCurrentCall;
-- (void)clearAndReRegisterAgainSIPAccount;
+- (void)refreshSIPAccountRegistrationState;
+- (void)restartPjsuaIfNeed;
 
 - (void)fetchAllContactsFromPhoneBook;
 - (void)updateCustomerTokenIOS;
