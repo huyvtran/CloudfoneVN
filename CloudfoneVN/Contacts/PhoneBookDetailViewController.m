@@ -54,8 +54,7 @@
     self.view.backgroundColor = GRAY_230;
     hCell = 60.0;
     if (IS_IPHONE || IS_IPOD) {
-        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
-        if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]) {
+        if (SCREEN_WIDTH >= SCREEN_WIDTH_IPHONE_6PLUS) {
             hCell = 70.0;
         }
     }

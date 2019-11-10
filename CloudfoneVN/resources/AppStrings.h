@@ -9,6 +9,10 @@
 #ifndef AppStrings_h
 #define AppStrings_h
 
+#define SCREEN_WIDTH_IPHONE_5       320
+#define SCREEN_WIDTH_IPHONE_6       375
+#define SCREEN_WIDTH_IPHONE_6PLUS   414
+
 #define AES_KEY         @"OdsCloudfone@123"
 #define keySyncPBX      @"CloudFonePBX"
 #define PBX_SERVER      @"PBX_SERVER"
@@ -38,34 +42,6 @@
 #define IS_IPHONE ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPhone" ] )
 #define IS_IPOD   ( [ [ [ UIDevice currentDevice ] model ] isEqualToString: @"iPod touch" ] )
 #define IS_IOS7   ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7)
-
-#define simulator       @"x86_64"
-#define Iphone4s        @"iPhone4,1"
-#define Iphone5_1       @"iPhone5,1"
-#define Iphone5_2       @"iPhone5,2"
-#define Iphone5c_1      @"iPhone5,3"
-#define Iphone5c_2      @"iPhone5,4"
-#define Iphone5s_1      @"iPhone6,1"
-#define Iphone5s_2      @"iPhone6,2"
-#define Iphone6         @"iPhone7,2"
-#define Iphone6_Plus    @"iPhone7,1"
-#define Iphone6s        @"iPhone8,1"
-#define Iphone6s_Plus   @"iPhone8,2"
-#define IphoneSE        @"iPhone8,4"
-#define Iphone7_1       @"iPhone9,1"
-#define Iphone7_2       @"iPhone9,3"
-#define Iphone7_Plus1   @"iPhone9,2"
-#define Iphone7_Plus2   @"iPhone9,4"
-#define Iphone8_1       @"iPhone10,1"
-#define Iphone8_2       @"iPhone10,4"
-#define Iphone8_Plus1   @"iPhone10,2"
-#define Iphone8_Plus2   @"iPhone10,5"
-#define IphoneX_1       @"iPhone10,3"
-#define IphoneX_2       @"iPhone10,6"
-#define IphoneXR        @"iPhone11,8"
-#define IphoneXS        @"iPhone11,2"
-#define IphoneXS_Max1   @"iPhone11,6"
-#define IphoneXS_Max2   @"iPhone11,4"
 
 #define MYRIADPRO_REGULAR       @"MYRIADPRO-REGULAR"
 #define MYRIADPRO_BOLD          @"MYRIADPRO-BOLD"

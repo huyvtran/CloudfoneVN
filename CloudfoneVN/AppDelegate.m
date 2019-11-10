@@ -656,9 +656,7 @@ AppDelegate      *app;
 
 - (void)setupFontForApp {
     if (IS_IPHONE || IS_IPOD) {
-        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
-        if ([deviceMode isEqualToString: Iphone5_1] || [deviceMode isEqualToString: Iphone5_2] || [deviceMode isEqualToString: Iphone5c_1] || [deviceMode isEqualToString: Iphone5c_2] || [deviceMode isEqualToString: Iphone5s_1] || [deviceMode isEqualToString: Iphone5s_2] || [deviceMode isEqualToString: IphoneSE])
-        {
+        if (SCREEN_WIDTH <= SCREEN_WIDTH_IPHONE_5) {
             fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:19.0];
             fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:17.0];
             fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
@@ -667,8 +665,7 @@ AppDelegate      *app;
             fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:17.0];
             fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:15.0];
             
-        }else if ([deviceMode isEqualToString: Iphone6] || [deviceMode isEqualToString: Iphone6s] || [deviceMode isEqualToString: Iphone7_1] || [deviceMode isEqualToString: Iphone7_2] || [deviceMode isEqualToString: Iphone8_1] || [deviceMode isEqualToString: Iphone8_2])
-        {
+        }else if (SCREEN_WIDTH <= SCREEN_WIDTH_IPHONE_6){
             fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:19.0];
             fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:17.0];
             fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:15.0];
@@ -677,27 +674,8 @@ AppDelegate      *app;
             fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:17.0];
             fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:15.0];
             
-        }else if ([deviceMode isEqualToString: Iphone6_Plus] || [deviceMode isEqualToString: Iphone6s_Plus] || [deviceMode isEqualToString: Iphone7_Plus1] || [deviceMode isEqualToString: Iphone7_Plus2] || [deviceMode isEqualToString: Iphone8_Plus1] || [deviceMode isEqualToString: Iphone8_Plus2])
-        {
-            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-            
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:22.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            
-        }else if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2]){
+        }else {
             //  Screen width: 375.000000 - Screen height: 812.000000
-            fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
-            fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
-            fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
-            
-            fontLargeBold = [UIFont fontWithName:MYRIADPRO_BOLD size:22.0];
-            fontNormalBold = [UIFont fontWithName:MYRIADPRO_BOLD size:20.0];
-            fontDescBold = [UIFont fontWithName:MYRIADPRO_BOLD size:18.0];
-            
-        }else{
             fontLarge = [UIFont fontWithName:MYRIADPRO_REGULAR size:22.0];
             fontNormal = [UIFont fontWithName:MYRIADPRO_REGULAR size:20.0];
             fontDesc = [UIFont fontWithName:MYRIADPRO_REGULAR size:18.0];
@@ -1152,11 +1130,6 @@ static void on_call_transfer_status(pjsua_call_id call_id,
     NSString *port = [info objectForKey:@"port"];
     NSString *password = [info objectForKey:@"password"];
     
-//    account = @"nhcla150";
-//    domain = @"nhanhoa1.vfone.vn";
-//    port = @"51000";
-//    password = @"cloudcall123";
-    
     if (![AppUtil isNullOrEmpty: account] && ![AppUtil isNullOrEmpty: domain] && ![AppUtil isNullOrEmpty: port] && ![AppUtil isNullOrEmpty: password])
     {
         pj_status_t status;
@@ -1184,7 +1157,7 @@ static void on_call_transfer_status(pjsua_call_id call_id,
         cfg.reg_timeout = 20;
         cfg.reg_retry_interval = 0; //  0 to disable re-retry register
         
-        NSString *strAgent = @"CloudFone";
+        NSString *strAgent = @"CloudFone_iOs";
         pjsip_generic_string_hdr CustomHeader;
         pj_str_t name = pj_str("User-Agent");
         pj_str_t value = pj_str((char *)[strAgent UTF8String]);

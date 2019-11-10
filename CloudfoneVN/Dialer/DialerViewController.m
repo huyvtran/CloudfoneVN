@@ -381,12 +381,11 @@
     //  Number view
     float hNumber = 100.0;
     float hTextField = 60.0;
-    if ([modelName isEqualToString: IphoneX_1] || [modelName isEqualToString: IphoneX_2] || [modelName isEqualToString: IphoneXR] || [modelName isEqualToString: IphoneXS] || [modelName isEqualToString: IphoneXS_Max1] || [modelName isEqualToString: IphoneXS_Max2])
-    {
+    if (SCREEN_WIDTH >= SCREEN_WIDTH_IPHONE_6PLUS) {
         hNumber = 120.0;
         hTextField = 80.0;
     }
-
+    
     [viewNumber mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self.view);
         make.top.equalTo(viewTop.mas_bottom);

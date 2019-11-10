@@ -242,43 +242,21 @@
     float marginY = 15.0;
     float hLabelName = 45.0;
     
-    if (IS_IPHONE || IS_IPOD) {
-        NSString *deviceMode = [DeviceUtil getModelsOfCurrentDevice];
-        if ([deviceMode isEqualToString: Iphone5_1] || [deviceMode isEqualToString: Iphone5_2] || [deviceMode isEqualToString: Iphone5c_1] || [deviceMode isEqualToString: Iphone5c_2] || [deviceMode isEqualToString: Iphone5s_1] || [deviceMode isEqualToString: Iphone5s_2] || [deviceMode isEqualToString: IphoneSE])
-        {
-            //  Screen width: 320.000000 - Screen height: 667.000000
-            wAvatar = 100.0;
-            wSmallIcon = 60.0;
-            marginTopAvatar = 25.0;
-            
-        }else if ([deviceMode isEqualToString: Iphone6] || [deviceMode isEqualToString: Iphone6s] || [deviceMode isEqualToString: Iphone7_1] || [deviceMode isEqualToString: Iphone7_2] || [deviceMode isEqualToString: Iphone8_1] || [deviceMode isEqualToString: Iphone8_2])
-        {
-            //  Screen width: 375.000000 - Screen height: 667.000000
-            wAvatar = 120.0;
-            wSmallIcon = 70.0;
-            
-        }else if ([deviceMode isEqualToString: Iphone6_Plus] || [deviceMode isEqualToString: Iphone6s_Plus] || [deviceMode isEqualToString: Iphone7_Plus1] || [deviceMode isEqualToString: Iphone7_Plus2] || [deviceMode isEqualToString: Iphone8_Plus1] || [deviceMode isEqualToString: Iphone8_Plus2])
-        {
-            //  Screen width: 414.000000 - Screen height: 736.000000
-            wAvatar = 120.0;
-            wSmallIcon = 75.0;
-            marginTopAvatar = 60.0;
-            
-        }else if ([deviceMode isEqualToString: IphoneX_1] || [deviceMode isEqualToString: IphoneX_2] || [deviceMode isEqualToString: IphoneXR] || [deviceMode isEqualToString: IphoneXS] || [deviceMode isEqualToString: IphoneXS_Max1] || [deviceMode isEqualToString: IphoneXS_Max2] || [deviceMode isEqualToString: simulator]){
-            //  Screen width: 375.000000 - Screen height: 812.000000
-            wAvatar = 150.0;
-            wSmallIcon = 80.0;
-            marginTopAvatar = 80.0;
-            hLabelName = 60.0;
-            
-        }else{
-            wAvatar = 130.0;
-            wSmallIcon = 60.0;
-        }
-        
-    }else{
-        wAvatar = 180.0;
+    if (SCREEN_WIDTH <= SCREEN_WIDTH_IPHONE_5) {
+        wAvatar = 100.0;
         wSmallIcon = 60.0;
+        marginTopAvatar = 25.0;
+        
+    }else if (SCREEN_WIDTH <= SCREEN_WIDTH_IPHONE_6){
+        wAvatar = 120.0;
+        wSmallIcon = 70.0;
+        marginTopAvatar = 40.0;
+        
+    }else {
+        wAvatar = 140.0;
+        wSmallIcon = 80.0;
+        marginTopAvatar = 80.0;
+        hLabelName = 60.0;
     }
     marginIcon = (SCREEN_WIDTH - 3*wSmallIcon)/4;
     

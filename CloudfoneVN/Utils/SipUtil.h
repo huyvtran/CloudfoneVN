@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (void)startSipUtil;
 + (BOOL)makeCallToPhoneNumber: (NSString *)phoneNumber displayName: (NSString *)displayName;
-+ (NSString *)makeValidPhoneNumber: (NSString *)phoneNumber;
 
 @end
 
