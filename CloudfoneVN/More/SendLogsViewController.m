@@ -57,12 +57,6 @@
 }
 
 - (void)startSendLogsFiles {
-    /*
-    NSString *totalEmail = [NSString stringWithFormat:@"mailto:%@?subject=%@&body=%@", @"lekhai0212@gmail.com", @"Send logs file", messageSend];
-    NSString *url = [totalEmail stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [[UIApplication sharedApplication]  openURL: [NSURL URLWithString: url]];
-    */
-    
     if ([MFMailComposeViewController canSendMail]) {
         BOOL networkReady = [DeviceUtil checkNetworkAvailable];
         if (!networkReady) {
@@ -74,7 +68,7 @@
         
         NSString *emailTitle =  @"Send logs files";
         NSString *messageBody = @"";
-        NSArray *toRecipents = [NSArray arrayWithObject:@"lekhai0212@gmail.com"];
+        NSArray *toRecipents = [NSArray arrayWithObject:@""];
         
         for (int i=0; i<listSelect.count; i++)
         {

@@ -834,30 +834,37 @@ AppDelegate      *app;
 //  Callback called by the library upon receiving incoming call
 static void on_incoming_call(pjsua_acc_id acc_id, pjsua_call_id call_id, pjsip_rx_data *rdata)
 {
-    pjsua_call_info ci;
-    PJ_UNUSED_ARG(acc_id);
-    PJ_UNUSED_ARG(rdata);
-
-    pjsua_call_get_info(call_id, &ci);
-
-    NSUUID *uuid = [NSUUID UUID];
-    NSString *callId = [NSString stringWithFormat:@"%d", call_id];
-
-    [app.del.calls setObject:callId forKey:uuid];
-    [app.del.uuids setObject:uuid forKey:callId];
-
-    NSString *caller = [app.localization localizedStringForKey:@"Unknown"];
-    NSArray *info = [app getContactNameForCallWithCallInfo: ci];
-    if (info != nil && info.count == 2) {
-        caller = [info firstObject];
-        app.remoteNumber = [info lastObject];
+    int num_call = pjsua_call_get_count();
+    if (num_call > 1) {
+        //  đang có cuộc gọi: từ chối với reason busy here
+        pjsua_call_hangup(call_id, PJSIP_SC_BUSY_HERE, NULL, NULL);
         
-        //  lưu tên cho số điện thoại để hiển thị khi cần thiết
-        NSString *key = SFM(@"name_for_%@", [info lastObject]);
-        [[NSUserDefaults standardUserDefaults] setObject:caller forKey:key];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    }else{
+        pjsua_call_info ci;
+        PJ_UNUSED_ARG(acc_id);
+        PJ_UNUSED_ARG(rdata);
+        
+        pjsua_call_get_info(call_id, &ci);
+        
+        NSUUID *uuid = [NSUUID UUID];
+        NSString *callId = [NSString stringWithFormat:@"%d", call_id];
+        
+        [app.del.calls setObject:callId forKey:uuid];
+        [app.del.uuids setObject:uuid forKey:callId];
+        
+        NSString *caller = [app.localization localizedStringForKey:@"Unknown"];
+        NSArray *info = [app getContactNameForCallWithCallInfo: ci];
+        if (info != nil && info.count == 2) {
+            caller = [info firstObject];
+            app.remoteNumber = [info lastObject];
+            
+            //  lưu tên cho số điện thoại để hiển thị khi cần thiết
+            NSString *key = SFM(@"name_for_%@", [info lastObject]);
+            [[NSUserDefaults standardUserDefaults] setObject:caller forKey:key];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+        [app.del reportIncomingCallwithUUID:uuid handle:app.remoteNumber caller_name:caller video:FALSE];
     }
-    [app.del reportIncomingCallwithUUID:uuid handle:app.remoteNumber caller_name:caller video:FALSE];
     
     //  PJ_LOG(3,(THIS_FILE, "Incoming call from %.*s!!", (int)ci.remote_info.slen,ci.remote_info.ptr));
     //  Automatically answer incoming calls with 200/OK
@@ -881,15 +888,11 @@ static void on_call_media_state(pjsua_call_id call_id)
 // Callback called by the library when call's state has changed
 static void on_call_state(pjsua_call_id call_id, pjsip_event *e)
 {
-    //  store call_id to get duration
-    app.current_call_id = call_id;
-
+    int numCalls = pjsua_call_get_count();
+    
     pjsua_call_info ci;
-
     PJ_UNUSED_ARG(e);
-
     pjsua_call_get_info(call_id, &ci);
-    //  PJ_LOG(3,(THIS_FILE, "Call %d state=%.*s", call_id, (int)ci.state_text.slen, ci.state_text.ptr));
     
     //  get remote number
     NSString *remoteNumber = @"";
@@ -898,40 +901,22 @@ static void on_call_state(pjsua_call_id call_id, pjsip_event *e)
         remoteNumber = [contactInfo objectAtIndex: 1];
     }
     
-    NSString *state = [app getContentOfCallStateWithStateValue: ci.state];
-    NSString *last_status = [NSString stringWithFormat:@"%d", ci.last_status];
-    app.pjsipConfAudioId = ci.conf_slot;
-
-    NSMutableDictionary *info = [[NSMutableDictionary alloc] initWithObjectsAndKeys:state, @"state", last_status, @"last_status", nil];
-    if (ci.state == PJSIP_INV_STATE_DISCONNECTED) {
-        app.current_call_id = -1;
-        [info setObject:[NSNumber numberWithLong:ci.connect_duration.sec] forKey:@"call_duration"];
-    }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:notifCallStateChanged object:info];
-
-    if (ci.state == PJSIP_INV_STATE_DISCONNECTED) {
-        //  reset remoteNumber
-        app.remoteNumber = @"";
+    //  store call_id to get duration
+    if (numCalls > 1) {
+        //  cuộc gọi bị từ chối khi đang nghe cuộc gọi khác
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
-                [app deleteSIPAccountDefault];
-                pjsua_destroy();
-            }
-            
-            /** Initial call role (UAC == caller) */
             //  TRƯỜNG HỢP CHỈ DÀNH CHO MÌNH LÀ CALEE VÀ CUỘC GỌI CHƯA ĐƯỢC KẾT NỐI THÀNH CÔNG
             if (ci.role != PJSIP_ROLE_UAC && ci.role != PJSIP_UAC_ROLE && ci.last_status != PJSIP_SC_OK) {
                 //  Nếu là nhận cuộc gọi vào last_status khác 200: Nghĩa là màn hình call chưa đc show lên, nên sẽ add history ở đây
                 NSString *callID = [AppUtil randomStringWithLength: 12];
                 NSString *date = [AppUtil getCurrentDate];
                 NSString *time = [AppUtil getCurrentTimeStamp];
-            
+                
                 NSString *callStatus;
                 if (ci.last_status == PJSIP_SC_REQUEST_TERMINATED) {
                     //  caller đã hủy cuộc gọi: do đó trạng thái sẽ là gọi nhỡ
                     callStatus = missed_call;
-                }else if (ci.last_status == PJSIP_SC_DECLINE) {
+                }else if (ci.last_status == PJSIP_SC_DECLINE || ci.last_status == PJSIP_SC_BUSY_HERE) {
                     //  mình huỷ cuộc gọi
                     callStatus = missed_call;
                 }else{
@@ -952,21 +937,81 @@ static void on_call_state(pjsua_call_id call_id, pjsip_event *e)
                 [[NSNotificationCenter defaultCenter] postNotificationName:updateMissedCallBadge object:nil];
                 [[NSNotificationCenter defaultCenter] postNotificationName:reloadHistoryCall object:nil];
             }
-            
-            NSString *callId = [NSString stringWithFormat:@"%d", call_id];
-            NSUUID *uuid = (NSUUID *)[app.del.uuids objectForKey: callId];
-            if (uuid) {
-                [app.del.uuids removeObjectForKey: callId];
-                [app.del.calls removeObjectForKey: uuid];
-
-                CXEndCallAction *act = [[CXEndCallAction alloc] initWithCallUUID:uuid];
-                CXTransaction *tr = [[CXTransaction alloc] initWithAction:act];
-                [app.del.controller requestTransaction:tr completion:^(NSError * _Nullable error) {
-                    NSLog(@"error = %@", error);
-                }];
-            }
         });
+    }else{
+        app.current_call_id = call_id;
+        
+        NSString *state = [app getContentOfCallStateWithStateValue: ci.state];
+        NSString *last_status = [NSString stringWithFormat:@"%d", ci.last_status];
+        app.pjsipConfAudioId = ci.conf_slot;
+        
+        NSMutableDictionary *info = [[NSMutableDictionary alloc] initWithObjectsAndKeys:state, @"state", last_status, @"last_status", nil];
+        if (ci.state == PJSIP_INV_STATE_DISCONNECTED) {
+            app.current_call_id = -1;
+            [info setObject:[NSNumber numberWithLong:ci.connect_duration.sec] forKey:@"call_duration"];
+        }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:notifCallStateChanged object:info];
+        
+        if (ci.state == PJSIP_INV_STATE_DISCONNECTED) {
+            //  reset remoteNumber
+            app.remoteNumber = @"";
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([UIApplication sharedApplication].applicationState != UIApplicationStateActive) {
+                    [app deleteSIPAccountDefault];
+                    pjsua_destroy();
+                }
+                
+                /** Initial call role (UAC == caller) */
+                //  TRƯỜNG HỢP CHỈ DÀNH CHO MÌNH LÀ CALEE VÀ CUỘC GỌI CHƯA ĐƯỢC KẾT NỐI THÀNH CÔNG
+                if (ci.role != PJSIP_ROLE_UAC && ci.role != PJSIP_UAC_ROLE && ci.last_status != PJSIP_SC_OK) {
+                    //  Nếu là nhận cuộc gọi vào last_status khác 200: Nghĩa là màn hình call chưa đc show lên, nên sẽ add history ở đây
+                    NSString *callID = [AppUtil randomStringWithLength: 12];
+                    NSString *date = [AppUtil getCurrentDate];
+                    NSString *time = [AppUtil getCurrentTimeStamp];
+                    
+                    NSString *callStatus;
+                    if (ci.last_status == PJSIP_SC_REQUEST_TERMINATED) {
+                        //  caller đã hủy cuộc gọi: do đó trạng thái sẽ là gọi nhỡ
+                        callStatus = missed_call;
+                    }else if (ci.last_status == PJSIP_SC_DECLINE) {
+                        //  mình huỷ cuộc gọi
+                        callStatus = missed_call;
+                    }else{
+                        callStatus = success_call;
+                    }
+                    
+                    NSString *strAddress = remoteNumber;
+                    NSString *domain = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_ID];
+                    NSString *port = [[NSUserDefaults standardUserDefaults] objectForKey:PBX_PORT];
+                    if (![AppUtil isNullOrEmpty: domain] && ![AppUtil isNullOrEmpty: port]) {
+                        strAddress = SFM(@"sip:%@@%@:%@", remoteNumber, domain, port);
+                    }
+                    
+                    int timeInt = [[NSDate date] timeIntervalSince1970];
+                    [DatabaseUtil InsertHistory:callID status:callStatus phoneNumber:remoteNumber callDirection:incomming_call recordFiles:@"" duration:0 date:date time:time time_int:timeInt callType:AUDIO_CALL_TYPE sipURI:strAddress MySip:USERNAME kCallId:@"" andFlag:1 andUnread:1];
+                    
+                    //  Update lại cuộc số gọi nhỡ ở
+                    [[NSNotificationCenter defaultCenter] postNotificationName:updateMissedCallBadge object:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:reloadHistoryCall object:nil];
+                }
+                
+                NSString *callId = [NSString stringWithFormat:@"%d", call_id];
+                NSUUID *uuid = (NSUUID *)[app.del.uuids objectForKey: callId];
+                if (uuid) {
+                    [app.del.uuids removeObjectForKey: callId];
+                    [app.del.calls removeObjectForKey: uuid];
+                    
+                    CXEndCallAction *act = [[CXEndCallAction alloc] initWithCallUUID:uuid];
+                    CXTransaction *tr = [[CXTransaction alloc] initWithAction:act];
+                    [app.del.controller requestTransaction:tr completion:^(NSError * _Nullable error) {
+                        NSLog(@"error = %@", error);
+                    }];
+                }
+            });
+        }
     }
+    
 }
 
 

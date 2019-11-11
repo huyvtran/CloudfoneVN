@@ -172,11 +172,6 @@
             cell._iconImage.image = [UIImage imageNamed:@"ic_introduce.png"];
             break;
         }
-        case eSendLogs:{
-            cell._lbTitle.text = [appDelegate.localization localizedStringForKey:@"Send logs"];
-            cell._iconImage.image = [UIImage imageNamed:@"ic_send_logs.png"];
-            break;
-        }
         case eAbout:{
             cell._lbTitle.text = [appDelegate.localization localizedStringForKey:@"About"];
             cell._iconImage.image = [UIImage imageNamed:@"ic_info.png"];
@@ -222,12 +217,6 @@
             IntroduceViewController *introduceVC = [[IntroduceViewController alloc] initWithNibName:@"IntroduceViewController" bundle:nil];
             introduceVC.hidesBottomBarWhenPushed = TRUE;
             [self.navigationController pushViewController:introduceVC animated:TRUE];
-            break;
-        }
-        case eSendLogs:{
-            SendLogsViewController *sendLogsVC = [[SendLogsViewController alloc] initWithNibName:@"SendLogsViewController" bundle:nil];
-            sendLogsVC.hidesBottomBarWhenPushed = TRUE;
-            [self.navigationController pushViewController:sendLogsVC animated:TRUE];
             break;
         }
         case eAbout:{

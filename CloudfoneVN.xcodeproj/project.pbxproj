@@ -150,6 +150,26 @@
 		560EE60C231A8C9C00144182 /* callkit_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 560EE60B231A8C9C00144182 /* callkit_logo.png */; };
 		560EE612231A8E2E00144182 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 560EE60E231A8E2E00144182 /* Info.plist */; };
 		560EE613231A8E2E00144182 /* PulsingHaloLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 560EE611231A8E2E00144182 /* PulsingHaloLayer.m */; };
+		56170D212379AE79003FDCDE /* scray_hunted_wavs_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D202379AE79003FDCDE /* scray_hunted_wavs_1.mp3 */; };
+		56170D332379B128003FDCDE /* notes_of_the_optimistic.caf in Resources */ = {isa = PBXBuildFile; fileRef = 56170D222379B126003FDCDE /* notes_of_the_optimistic.caf */; };
+		56170D342379B128003FDCDE /* a_ha_ha.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D232379B126003FDCDE /* a_ha_ha.mp3 */; };
+		56170D352379B128003FDCDE /* callnex_ring.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56170D242379B126003FDCDE /* callnex_ring.wav */; };
+		56170D362379B128003FDCDE /* bapoo_aau.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D252379B126003FDCDE /* bapoo_aau.mp3 */; };
+		56170D372379B128003FDCDE /* landras_dream.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D262379B126003FDCDE /* landras_dream.mp3 */; };
+		56170D382379B128003FDCDE /* cute_cat_song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D272379B126003FDCDE /* cute_cat_song.mp3 */; };
+		56170D392379B128003FDCDE /* smekh_rebenka_mix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D282379B126003FDCDE /* smekh_rebenka_mix.mp3 */; };
+		56170D3A2379B128003FDCDE /* jingle_bells.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D292379B127003FDCDE /* jingle_bells.mp3 */; };
+		56170D3B2379B128003FDCDE /* lenovo_suond.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D2A2379B127003FDCDE /* lenovo_suond.mp3 */; };
+		56170D3C2379B128003FDCDE /* donald_xmas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D2B2379B127003FDCDE /* donald_xmas.mp3 */; };
+		56170D3D2379B128003FDCDE /* htc_tone.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D2C2379B127003FDCDE /* htc_tone.mp3 */; };
+		56170D3E2379B128003FDCDE /* wave.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D2D2379B127003FDCDE /* wave.mp3 */; };
+		56170D3F2379B128003FDCDE /* angry_birds.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D2E2379B127003FDCDE /* angry_birds.mp3 */; };
+		56170D402379B128003FDCDE /* fast_browser.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D2F2379B127003FDCDE /* fast_browser.mp3 */; };
+		56170D412379B128003FDCDE /* new_nokia_remix.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D302379B128003FDCDE /* new_nokia_remix.mp3 */; };
+		56170D422379B128003FDCDE /* din_don.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D312379B128003FDCDE /* din_don.mp3 */; };
+		56170D432379B128003FDCDE /* chirtmas.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D322379B128003FDCDE /* chirtmas.mp3 */; };
+		56170D472379B21A003FDCDE /* callnex_ring2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 56170D452379B21A003FDCDE /* callnex_ring2.wav */; };
+		56170D4D2379B59A003FDCDE /* wave2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 56170D4C2379B59A003FDCDE /* wave2.mp3 */; };
 		567D75A923141246004A57F0 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 567D75A823141245004A57F0 /* right-arrow.png */; };
 		567D75AD23141283004A57F0 /* LanguageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 567D75AB23141283004A57F0 /* LanguageViewController.m */; };
 		567D75AE23141283004A57F0 /* LanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 567D75AC23141283004A57F0 /* LanguageViewController.xib */; };
@@ -904,6 +924,26 @@
 		560EE60F231A8E2E00144182 /* PulsingHaloLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHaloLayer.h; sourceTree = "<group>"; };
 		560EE610231A8E2E00144182 /* PulsingHalo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PulsingHalo.h; sourceTree = "<group>"; };
 		560EE611231A8E2E00144182 /* PulsingHaloLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PulsingHaloLayer.m; sourceTree = "<group>"; };
+		56170D202379AE79003FDCDE /* scray_hunted_wavs_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = scray_hunted_wavs_1.mp3; sourceTree = "<group>"; };
+		56170D222379B126003FDCDE /* notes_of_the_optimistic.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = notes_of_the_optimistic.caf; sourceTree = "<group>"; };
+		56170D232379B126003FDCDE /* a_ha_ha.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = a_ha_ha.mp3; sourceTree = "<group>"; };
+		56170D242379B126003FDCDE /* callnex_ring.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = callnex_ring.wav; sourceTree = "<group>"; };
+		56170D252379B126003FDCDE /* bapoo_aau.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bapoo_aau.mp3; sourceTree = "<group>"; };
+		56170D262379B126003FDCDE /* landras_dream.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = landras_dream.mp3; sourceTree = "<group>"; };
+		56170D272379B126003FDCDE /* cute_cat_song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cute_cat_song.mp3; sourceTree = "<group>"; };
+		56170D282379B126003FDCDE /* smekh_rebenka_mix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = smekh_rebenka_mix.mp3; sourceTree = "<group>"; };
+		56170D292379B127003FDCDE /* jingle_bells.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = jingle_bells.mp3; sourceTree = "<group>"; };
+		56170D2A2379B127003FDCDE /* lenovo_suond.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lenovo_suond.mp3; sourceTree = "<group>"; };
+		56170D2B2379B127003FDCDE /* donald_xmas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = donald_xmas.mp3; sourceTree = "<group>"; };
+		56170D2C2379B127003FDCDE /* htc_tone.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = htc_tone.mp3; sourceTree = "<group>"; };
+		56170D2D2379B127003FDCDE /* wave.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wave.mp3; sourceTree = "<group>"; };
+		56170D2E2379B127003FDCDE /* angry_birds.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = angry_birds.mp3; sourceTree = "<group>"; };
+		56170D2F2379B127003FDCDE /* fast_browser.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fast_browser.mp3; sourceTree = "<group>"; };
+		56170D302379B128003FDCDE /* new_nokia_remix.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = new_nokia_remix.mp3; sourceTree = "<group>"; };
+		56170D312379B128003FDCDE /* din_don.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = din_don.mp3; sourceTree = "<group>"; };
+		56170D322379B128003FDCDE /* chirtmas.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chirtmas.mp3; sourceTree = "<group>"; };
+		56170D452379B21A003FDCDE /* callnex_ring2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = callnex_ring2.wav; sourceTree = "<group>"; };
+		56170D4C2379B59A003FDCDE /* wave2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = wave2.mp3; sourceTree = "<group>"; };
 		567D75A823141245004A57F0 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
 		567D75AA23141283004A57F0 /* LanguageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageViewController.h; sourceTree = "<group>"; };
 		567D75AB23141283004A57F0 /* LanguageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageViewController.m; sourceTree = "<group>"; };
@@ -1400,6 +1440,26 @@
 				4CFED076231673E60091C3D1 /* beep.mp3 */,
 				4CFED077231673E60091C3D1 /* ringbacktone.mp3 */,
 				4CFED078231673E60091C3D1 /* silence.mp3 */,
+				56170D202379AE79003FDCDE /* scray_hunted_wavs_1.mp3 */,
+				56170D232379B126003FDCDE /* a_ha_ha.mp3 */,
+				56170D2E2379B127003FDCDE /* angry_birds.mp3 */,
+				56170D252379B126003FDCDE /* bapoo_aau.mp3 */,
+				56170D242379B126003FDCDE /* callnex_ring.wav */,
+				56170D452379B21A003FDCDE /* callnex_ring2.wav */,
+				56170D322379B128003FDCDE /* chirtmas.mp3 */,
+				56170D272379B126003FDCDE /* cute_cat_song.mp3 */,
+				56170D312379B128003FDCDE /* din_don.mp3 */,
+				56170D2B2379B127003FDCDE /* donald_xmas.mp3 */,
+				56170D2F2379B127003FDCDE /* fast_browser.mp3 */,
+				56170D2C2379B127003FDCDE /* htc_tone.mp3 */,
+				56170D292379B127003FDCDE /* jingle_bells.mp3 */,
+				56170D262379B126003FDCDE /* landras_dream.mp3 */,
+				56170D2A2379B127003FDCDE /* lenovo_suond.mp3 */,
+				56170D302379B128003FDCDE /* new_nokia_remix.mp3 */,
+				56170D222379B126003FDCDE /* notes_of_the_optimistic.caf */,
+				56170D282379B126003FDCDE /* smekh_rebenka_mix.mp3 */,
+				56170D2D2379B127003FDCDE /* wave.mp3 */,
+				56170D4C2379B59A003FDCDE /* wave2.mp3 */,
 			);
 			path = sounds;
 			sourceTree = "<group>";
@@ -2725,6 +2785,7 @@
 				56C8C31B2312A97A0011CF93 /* MYRIADPRO-REGULAR.OTF in Resources */,
 				56FC134523127AFD0076288C /* menu_keypad_en_def.png in Resources */,
 				56FC135C23127AFD0076288C /* ic_history_bottom_bar_act@2x.png in Resources */,
+				56170D392379B128003FDCDE /* smekh_rebenka_mix.mp3 in Resources */,
 				56FC129A23126B870076288C /* history_menu_def@2x.png in Resources */,
 				4CFED06A231670940091C3D1 /* mini_key_5_hover.png in Resources */,
 				4C03F97D2315209E00A17315 /* EditContactViewController.xib in Resources */,
@@ -2747,20 +2808,28 @@
 				56FC136623127AFD0076288C /* ic_transfer_dis.png in Resources */,
 				56C8C3312312CF220011CF93 /* no_avatar.png in Resources */,
 				56FC135823127AFD0076288C /* numpad_five_default.png in Resources */,
+				56170D4D2379B59A003FDCDE /* wave2.mp3 in Resources */,
 				56FC132E23127AFD0076288C /* ic_speaker_ble_dis.png in Resources */,
 				56FC129323126B870076288C /* dialer_menu_act@3x.png in Resources */,
 				4C03F9C5231546C600A17315 /* call-background.jpg in Resources */,
+				56170D3A2379B128003FDCDE /* jingle_bells.mp3 in Resources */,
+				56170D332379B128003FDCDE /* notes_of_the_optimistic.caf in Resources */,
 				56FC136E23127AFD0076288C /* numpad_zero_hover.png in Resources */,
 				56FC131723127AFD0076288C /* ic_more_bottom_bar_def_old.png in Resources */,
 				4CFED062231670940091C3D1 /* mini_key_9.png in Resources */,
+				56170D472379B21A003FDCDE /* callnex_ring2.wav in Resources */,
+				56170D212379AE79003FDCDE /* scray_hunted_wavs_1.mp3 in Resources */,
 				56C8C3472312D88D0011CF93 /* ic_setup.png in Resources */,
 				56FC136223127AFD0076288C /* ic_pause_dis.png in Resources */,
+				56170D352379B128003FDCDE /* callnex_ring.wav in Resources */,
+				56170D342379B128003FDCDE /* a_ha_ha.mp3 in Resources */,
 				56A61D142316BDCA005F06CA /* AllCallsViewController.xib in Resources */,
 				4CFED072231670940091C3D1 /* mini_key_7_hover.png in Resources */,
 				56FC132623127AFD0076288C /* ic_speaker_dis.png in Resources */,
 				56FC135023127AFD0076288C /* call_hover.png in Resources */,
 				4CFED067231670940091C3D1 /* mini_key_0.png in Resources */,
 				56FC135623127AFD0076288C /* hotline_default.png in Resources */,
+				56170D422379B128003FDCDE /* din_don.mp3 in Resources */,
 				56A61D092316BC45005F06CA /* CallsHistoryViewController.xib in Resources */,
 				5607EAD32326AD8B00B24CA6 /* m_auto.h.in in Resources */,
 				56FDB25323118FF800ED44FD /* Assets.xcassets in Resources */,
@@ -2778,6 +2847,7 @@
 				4CFED070231670940091C3D1 /* mini_key_6.png in Resources */,
 				56FC133523127AFD0076288C /* ic_keypad_def.png in Resources */,
 				56FC136823127AFD0076288C /* ic_history_bottom_bar_def@2x.png in Resources */,
+				56170D3F2379B128003FDCDE /* angry_birds.mp3 in Resources */,
 				4C12D7562313DC23002EC8D8 /* bg_button.png in Resources */,
 				56FC136B23127AFD0076288C /* ic_call_bottom_bar_def.png in Resources */,
 				56FC131623127AFD0076288C /* ic_phonebook_bottom_bar_def@2x.png in Resources */,
@@ -2813,6 +2883,7 @@
 				56A61D342316D5A2005F06CA /* no_avatar_blue.png in Resources */,
 				56FC129C23126B870076288C /* dialer_menu_act.png in Resources */,
 				56FC136A23127AFD0076288C /* transfer_call_hover.png in Resources */,
+				56170D362379B128003FDCDE /* bapoo_aau.mp3 in Resources */,
 				5607EBE02326AFC800B24CA6 /* sip_autoconf.h.in in Resources */,
 				56FC134D23127AFD0076288C /* numpad_three_hover.png in Resources */,
 				56FC132A23127AFD0076288C /* add_call_hover.png in Resources */,
@@ -2821,6 +2892,7 @@
 				56FC128E23126B870076288C /* contacts_menu_def.png in Resources */,
 				56FC136023127AFD0076288C /* menu_history_en_def.png in Resources */,
 				56FC135E23127AFD0076288C /* ic_more_bottom_bar_act.png in Resources */,
+				56170D3C2379B128003FDCDE /* donald_xmas.mp3 in Resources */,
 				56C8C3432312D88D0011CF93 /* ic_setting.png in Resources */,
 				4C03F94B2314E2B100A17315 /* ic_search.png in Resources */,
 				4C03F9802315218B00A17315 /* ic_change_photo.png in Resources */,
@@ -2845,6 +2917,7 @@
 				4CFDD9BF23176E6A00FF37E4 /* DetailHistoryCNViewController.xib in Resources */,
 				56FC129B23126B870076288C /* history_menu_def.png in Resources */,
 				567D75A923141246004A57F0 /* right-arrow.png in Resources */,
+				56170D372379B128003FDCDE /* landras_dream.mp3 in Resources */,
 				567D75EE23143319004A57F0 /* logo.png in Resources */,
 				56FC135A23127AFD0076288C /* menu_history_en_act.png in Resources */,
 				56FC1211231244660076288C /* launch_logo.png in Resources */,
@@ -2863,14 +2936,17 @@
 				56FC131923127AFD0076288C /* numpad_one_hover.png in Resources */,
 				56FC135723127AFD0076288C /* ic_pause_act.png in Resources */,
 				56FC129723126B870076288C /* dialer_menu_def@2x.png in Resources */,
+				56170D3E2379B128003FDCDE /* wave.mp3 in Resources */,
 				56FC137523127AFD0076288C /* ic_mute_dis.png in Resources */,
 				4CFED06D231670940091C3D1 /* mini_key_sharp.png in Resources */,
 				56A61D362316DCCA005F06CA /* ic_tick.png in Resources */,
 				56FC134323127AFD0076288C /* numpad_start_hover.png in Resources */,
 				56FC133823127AFD0076288C /* ic_pause_def.png in Resources */,
 				567D75F923143A2B004A57F0 /* ic_sync.png in Resources */,
+				56170D3B2379B128003FDCDE /* lenovo_suond.mp3 in Resources */,
 				56C8C3332312CF350011CF93 /* ic_edit.png in Resources */,
 				567D75D323141BC7004A57F0 /* AboutViewController.xib in Resources */,
+				56170D412379B128003FDCDE /* new_nokia_remix.mp3 in Resources */,
 				4CFED073231670940091C3D1 /* mini_key_8_hover.png in Resources */,
 				4C03F966231512D100A17315 /* UIKContactCell.xib in Resources */,
 				4CFDD9CB2317744E00FF37E4 /* NewHistoryDetailCell.xib in Resources */,
@@ -2880,6 +2956,7 @@
 				4C03F9472314DDF900A17315 /* btn_contacts_home.png in Resources */,
 				56A61D3A2316E099005F06CA /* unticked_red.png in Resources */,
 				560EE60C231A8C9C00144182 /* callkit_logo.png in Resources */,
+				56170D382379B128003FDCDE /* cute_cat_song.mp3 in Resources */,
 				4CFED065231670940091C3D1 /* mini_key_2.png in Resources */,
 				56C8C32C2312CB5A0011CF93 /* en.txt in Resources */,
 				56FC128823126B870076288C /* history_menu_act@3x.png in Resources */,
@@ -2893,7 +2970,9 @@
 				56FC133F23127AFD0076288C /* menu_contacts_def.png in Resources */,
 				56FC134423127AFD0076288C /* transfer_call.png in Resources */,
 				567D75B9231415BE004A57F0 /* ic_checked.png in Resources */,
+				56170D402379B128003FDCDE /* fast_browser.mp3 in Resources */,
 				56FC129623126B870076288C /* more_menu_act@3x.png in Resources */,
+				56170D432379B128003FDCDE /* chirtmas.mp3 in Resources */,
 				567D75AE23141283004A57F0 /* LanguageViewController.xib in Resources */,
 				56FC128A23126B870076288C /* dialer_menu_def.png in Resources */,
 				56FC132923127AFD0076288C /* ic_phonebook_bottom_bar_def_old.png in Resources */,
@@ -2906,6 +2985,7 @@
 				4CFED063231670940091C3D1 /* mini_key_sharp_hover.png in Resources */,
 				567D75FD23143A62004A57F0 /* tf_close_bg.png in Resources */,
 				56FC122023124BF10076288C /* DialerViewController.xib in Resources */,
+				56170D3D2379B128003FDCDE /* htc_tone.mp3 in Resources */,
 				56FC131323127AFD0076288C /* menu_contacts_act.png in Resources */,
 				56FC132C23127AFD0076288C /* ic_phonebook_bottom_bar_act@2x.png in Resources */,
 				4CFDD9D82317AFBD00FF37E4 /* AllContactListViewController.xib in Resources */,
